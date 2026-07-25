@@ -207,28 +207,7 @@ function App() {
     setMounted(true)
   }, [])
 
-  const features = [
-    {
-      icon: '⚡',
-      title: 'Ultra-Fast Charging',
-      description: 'Locate and connect to the fastest charging stations near you in seconds.',
-    },
-    {
-      icon: '🗺️',
-      title: 'Smart Route Planning',
-      description: 'AI-powered routes that optimize for charging stops and battery range.',
-    },
-    {
-      icon: '💳',
-      title: 'Seamless Payments',
-      description: 'One-tap payments across all supported charging networks. No subscriptions.',
-    },
-    {
-      icon: '📊',
-      title: 'Live Analytics',
-      description: 'Real-time station availability, pricing, and charging speed insights.',
-    },
-  ]
+
 
   return (
     <div className="relative min-h-screen bg-[#0a0a0f] text-white overflow-hidden">
@@ -248,8 +227,8 @@ function App() {
             </div>
           </div>
           <span className="text-xl font-bold tracking-tight">
-            <span className="bg-gradient-to-r from-cyan-300 to-emerald-400 bg-clip-text text-transparent">Volt</span>
-            <span className="text-white">ink</span>
+            <span className="bg-gradient-to-r from-cyan-300 to-emerald-400 bg-clip-text text-transparent">Vo</span>
+            <span className="text-white">wer</span>
           </span>
         </div>
         <div className="flex items-center gap-4">
@@ -258,7 +237,7 @@ function App() {
             In Development
           </span>
           <a
-            href="https://github.com/chandankoranga02/Voltink"
+            href="https://github.com/chandankoranga02/vower"
             target="_blank"
             rel="noopener noreferrer"
             className="p-2 rounded-lg hover:bg-white/5 transition-colors"
