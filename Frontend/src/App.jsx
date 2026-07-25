@@ -1,3 +1,14 @@
+<<<<<<< HEAD
+import React from 'react';
+import Login from './pages/Login';
+
+function App() {
+  return (
+    <div>
+      <Login />
+    </div>
+  );
+=======
 import { useState, useEffect, useRef } from 'react'
 
 /* ───── tiny SVG icons (inline to avoid external deps) ───── */
@@ -316,6 +327,7 @@ function App() {
       </main>
     </div>
   )
+>>>>>>> 6998349d90d0f48a02907978d2b7faa37ab34e9d
 }
 
-export default App
+export default App;

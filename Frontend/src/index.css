@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+@import "tailwindcss";
+=======
 @import "tailwindcss";
 
 /* ── Custom Animations ── */
@@ -192,3 +195,4 @@ html {
     transition-duration: 0.01ms !important;
   }
 }
+>>>>>>> 6998349d90d0f48a02907978d2b7faa37ab34e9d
