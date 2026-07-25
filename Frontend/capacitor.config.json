@@ -1,0 +1,9 @@
+{
+  "appId": "com.vower.app",
+  "appName": "Vower",
+  "webDir": "dist",
+  "server": {
+    "url": "https://vower-kappa.vercel.app/",
+    "cleartext": false
+  }
+}
