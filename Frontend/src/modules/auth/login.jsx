@@ -10,7 +10,6 @@ const Login = () => {
   const [error, setError] = useState('');
 
   const validateEmail = (email) => /\S+@\S+\.\S+/.test(email);
-
   const handleLogin = async (e) => {
     e.preventDefault();
     setError('');
