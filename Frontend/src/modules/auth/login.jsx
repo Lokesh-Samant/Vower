@@ -1,203 +1,222 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import BrandPanel from './components/BrandPanel.jsx';
 
-const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [rememberMe, setRememberMe] = useState(false);
-  
+/**
+ * ==========================================
+ * SVG ICON COMPONENTS
+ * ==========================================
+ */
+
+// Toggle Password Eye Icons
+const EyeIcon = ({ className = "w-5 h-5" }) => (
+  <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+  </svg>
+);
+
+const EyeOffIcon = ({ className = "w-5 h-5" }) => (
+  <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858-5.908a10.12 10.12 0 015.122-1.063c4.478 0 8.268 2.943 9.542 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21f-9-9m0 0L3 3" />
+  </svg>
+);
+
+// Official Google Logo SVG
+const GoogleIcon = () => (
+  <svg className="w-5 h-5" viewBox="0 0 24 24">
+    <path
+      fill="#4285F4"
+      d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+    />
+    <path
+      fill="#34A853"
+      d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+    />
+    <path
+      fill="#FBBC05"
+      d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"
+    />
+    <path
+      fill="#EA4335"
+      d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"
+    />
+  </svg>
+);
+
+// Phone / Mobile Icon SVG
+const PhoneIcon = ({ className = "w-5 h-5" }) => (
+  <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path 
+      strokeLinecap="round" 
+      strokeLinejoin="round" 
+      strokeWidth={1.8} 
+      d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" 
+    />
+  </svg>
+);
+
+
+/**
+ * ==========================================
+ * MAIN AUTH / LOGIN COMPONENT
+ * ==========================================
+ */
+export default function AuthPage() {
   const [showPassword, setShowPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
 
-  const validateEmail = (email) => /\S+@\S+\.\S+/.test(email);
-  const handleLogin = async (e) => {
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setError('');
+    console.log('Logging in with credentials:', formData);
+  };
 
-    if (!validateEmail(email)) {
-      setError('Please enter a valid email address.');
-      return;
-    }
+  const handleGoogleSignIn = () => {
+    console.log('Initiating Google Sign-In...');
+  };
 
-    if (password.length < 6) {
-      setError('Password must be at least 6 characters long.');
-      return;
-    }
-
-    setIsLoading(true);
-
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-
-      if (email === "error@vower.internal") {
-        throw new Error("Invalid email or password.");
-      }
-
-      console.log("Logged in:", { email, password, rememberMe });
-      alert("Login Successful!");
-    } catch (err) {
-      setError(err.message || 'Something went wrong.');
-    } finally {
-      setIsLoading(false);
-    }
+  const handlePhoneSignIn = () => {
+    console.log('Navigating to Phone OTP Verification page...');
   };
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100 flex flex-col lg:flex-row font-sans selection:bg-emerald-500 selection:text-zinc-950">
-      
-      {/* Mobile Branding Header (Visible only on Mobile/Tablet) */}
-      <div className="lg:hidden px-6 pt-8 pb-4 flex items-center justify-between border-b border-zinc-900/80 bg-zinc-950/50 backdrop-blur-md sticky top-0 z-20">
-        <div className="flex items-center gap-2.5">
-          <div className="h-8 w-8 rounded-lg bg-emerald-500 flex items-center justify-center font-bold text-zinc-950 text-sm shadow-lg shadow-emerald-500/20">
-            V
-          </div>
-          <span className="font-bold text-xl tracking-wider text-zinc-100">VOWER</span>
-        </div>
-        <span className="text-[10px] font-mono uppercase tracking-widest text-emerald-400/90 bg-emerald-500/10 px-2 py-1 rounded border border-emerald-500/20">
-          v1.0
-        </span>
-      </div>
+    <div className="flex flex-col lg:flex-row min-h-screen w-full bg-[#F5F5F7]">
+      <BrandPanel />
 
-      {/* Desktop Branding Side Panel */}
-      <div className="hidden lg:flex lg:w-1/2 bg-zinc-900/60 border-r border-zinc-800/60 p-12 flex-col justify-between relative overflow-hidden">
-        <div className="flex items-center gap-3 z-10">
-          <div className="h-9 w-9 rounded-xl bg-emerald-500 flex items-center justify-center font-bold text-zinc-950 text-lg shadow-lg shadow-emerald-500/20">
-            V
-          </div>
-          <span className="font-bold text-2xl tracking-wider text-zinc-100">VOWER</span>
-        </div>
+      <div className="flex w-full flex-1 items-start lg:items-center justify-center px-6 pt-[5vh] pb-6 lg:py-12 lg:w-1/2 bg-[#F5F5F7]">
+        <div className="w-full max-w-md">
 
-        <div className="space-y-4 max-w-md z-10">
-          <h2 className="text-3xl font-bold tracking-tight text-zinc-100 leading-tight">
-           Powering Every Promise
-          </h2>
-          <p className="text-zinc-400 text-sm leading-relaxed">
-            Manage your local environments, stream system diagnostics, and coordinate team deployments in one unified dashboard.
-          </p>
-        </div>
-
-        <div className="text-xs text-zinc-500 z-10">
-          &copy; {new Date().getFullYear()} Vower Inc. All rights reserved.
-        </div>
-        
-        <div className="absolute -bottom-20 -left-20 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
-      </div>
-
-      {/* Form Container: Fully Mobile Optimized */}
-      <div className="flex-1 flex items-center justify-center px-5 py-8 sm:px-8 lg:p-12">
-        <div className="w-full max-w-sm space-y-6 sm:space-y-7">
-          
-          <div className="space-y-1.5">
-            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-100">
-              Sign in
-            </h1>
-            <p className="text-xs sm:text-sm text-zinc-400">
-              Enter your account credentials to continue
+          {/* Desktop heading */}
+          <div className="mb-7 hidden lg:block">
+            <h2 className="font-display text-2xl font-semibold text-volt-deep">
+              Welcome back
+            </h2>
+            <p className="mt-1 text-sm text-volt-deep/50">
+              Sign in to your account to continue.
             </p>
           </div>
 
-          {error && (
-            <div className="p-3.5 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-xs sm:text-sm font-medium animate-fade-in">
-              {error}
-            </div>
-          )}
+          {/* Mobile heading */}
+          <div className="mb-2 text-center lg:hidden">
+            <h2 className="text-xl font-semibold text-volt-deep">Welcome back</h2>
+          </div>
 
-          <form onSubmit={handleLogin} className="space-y-4 sm:space-y-5">
+          {/* CREDENTIALS LOGIN FORM */}
+          <form onSubmit={handleSubmit} className="space-y-4">
             
-            {/* Email Field (44px+ height for touch target, 16px text to prevent auto-zoom) */}
-            <div className="space-y-2">
-              <label className="text-xs font-semibold text-zinc-300 uppercase tracking-wider">
-                Email
-              </label>
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                  if (error) setError('');
-                }}
-                placeholder="dev@vower.internal"
-                className="w-full h-12 px-4 rounded-lg bg-zinc-900 border border-zinc-800 text-base sm:text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition"
-              />
-            </div>
-
-            {/* Password Field */}
-            <div className="space-y-2">
-              <div className="flex items-center justify-between">
-                <label className="text-xs font-semibold text-zinc-300 uppercase tracking-wider">
-                  Password
-                </label>
-                <button
-                  type="button"
-                  onClick={() => alert("Reset password API flow")}
-                  className="text-xs text-emerald-400 hover:underline active:text-emerald-300 font-medium"
-                >
-                  Forgot?
-                </button>
-              </div>
-              
+            {/* Email Input */}
+            <div className="block">
               <div className="relative">
                 <input
-                  type={showPassword ? "text" : "password"}
+                  type="email"
+                  name="email"
                   required
-                  value={password}
-                  onChange={(e) => {
-                    setPassword(e.target.value);
-                    if (error) setError('');
-                  }}
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="Email address"
+                  className="w-full rounded-xl border border-volt-deep/10 bg-gray-50 px-4 py-2.5 text-[15px] text-volt-deep placeholder:text-volt-deep/40 outline-none transition focus:border-volt focus:bg-white focus:ring-4 focus:ring-volt/15"
+                />
+              </div>
+            </div>
+
+            {/* Password Input */}
+            <div className="block">
+              <div className="flex justify-between items-center mb-1">
+                <span className="text-xs font-medium text-volt-deep/50">Password</span>
+                <Link to="/forgotpassword" className="text-xs font-medium text-volt-dim hover:text-volt-deep transition-colors">
+                  Forgot password?
+                </Link>
+              </div>
+              <div className="relative">
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  name="password"
+                  required
+                  value={formData.password}
+                  onChange={handleChange}
                   placeholder="••••••••"
-                  className="w-full h-12 pl-4 pr-14 rounded-lg bg-zinc-900 border border-zinc-800 text-base sm:text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition"
+                  className="w-full rounded-xl border border-volt-deep/10 bg-gray-50 px-4 py-2.5 pr-11 text-[15px] text-volt-deep placeholder:text-volt-deep/40 outline-none transition focus:border-volt focus:bg-white focus:ring-4 focus:ring-volt/15"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-0 top-0 h-12 px-4 flex items-center justify-center text-xs font-medium text-zinc-400 hover:text-zinc-200 active:text-white select-none"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-volt-deep/40 hover:text-volt-deep transition"
+                  aria-label="Toggle Password Visibility"
                 >
-                  {showPassword ? "Hide" : "Show"}
+                  {showPassword ? <EyeOffIcon className="w-4 h-4" /> : <EyeIcon className="w-4 h-4" />}
                 </button>
               </div>
             </div>
 
-            {/* Remember Me Box */}
-            <div className="pt-1">
-              <label className="flex items-center gap-3 py-1 cursor-pointer text-zinc-300 select-none">
-                <input
-                  type="checkbox"
-                  checked={rememberMe}
-                  onChange={(e) => setRememberMe(e.target.checked)}
-                  className="h-5 w-5 rounded bg-zinc-900 border-zinc-800 text-emerald-500 focus:ring-emerald-500 focus:ring-offset-zinc-950 accent-emerald-500"
-                />
-                <span className="text-xs sm:text-sm font-medium">Remember this device</span>
-              </label>
-            </div>
-
-            {/* Mobile Touch-Optimized Submit Button */}
+            {/* Sign In Button */}
             <button
               type="submit"
-              disabled={isLoading}
-              className="w-full h-12 rounded-lg bg-emerald-500 hover:bg-emerald-400 active:bg-emerald-600 disabled:bg-emerald-500/50 text-zinc-950 font-bold text-sm tracking-wide transition duration-150 active:scale-[0.98] flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/10"
+              className="mt-2 flex w-full items-center justify-center rounded-xl bg-[#2A2A2E] py-3 text-sm font-semibold text-white shadow-sm shadow-black/20 transition hover:bg-[#3A3A3E] active:scale-[0.97]"
             >
-              {isLoading ? (
-                <>
-                  <span className="w-5 h-5 border-2 border-zinc-950/30 border-t-zinc-950 rounded-full animate-spin" />
-                  <span>Signing in...</span>
-                </>
-              ) : (
-                "Sign In"
-              )}
+              Sign In
             </button>
           </form>
 
-          <p className="text-[11px] sm:text-xs text-center text-zinc-500 leading-relaxed pt-2">
-            By signing in, you agree to Vower's <br className="sm:hidden" />
-            <a href="#terms" className="underline hover:text-zinc-400">Terms</a> and <a href="#privacy" className="underline hover:text-zinc-400">Privacy Policy</a>.
-          </p>
+          {/* Divider */}
+          <div className="my-5 flex items-center gap-3">
+            <span className="h-px flex-1 bg-volt-deep/10" />
+            <span className="text-xs font-medium uppercase tracking-widest text-volt-deep/30">or continue with</span>
+            <span className="h-px flex-1 bg-volt-deep/10" />
+          </div>
+
+          {/* Alternative login options */}
+          <div className="space-y-3">
+            {/* Google Button */}
+            <button
+              type="button"
+              onClick={handleGoogleSignIn}
+              className="flex w-full items-center gap-4 rounded-2xl border border-volt-deep/10 bg-white px-5 py-3.5 text-base font-medium text-volt-deep shadow-sm shadow-black/5 transition active:scale-[0.97] hover:border-volt-deep/20 hover:bg-gray-50"
+            >
+              <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-volt-deep/5">
+                <GoogleIcon />
+              </span>
+              <span className="flex-1 text-left text-sm">Sign in with Google</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="opacity-30">
+                <path d="M9 6l6 6-6 6" />
+              </svg>
+            </button>
+
+            {/* Phone Number / OTP Button */}
+            <button
+              type="button"
+              onClick={handlePhoneSignIn}
+              className="flex w-full items-center gap-4 rounded-2xl border border-volt-deep/10 bg-white px-5 py-3.5 text-base font-medium text-volt-deep shadow-sm shadow-black/5 transition active:scale-[0.97] hover:border-volt-deep/20 hover:bg-gray-50"
+            >
+              <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-volt-deep/5">
+                <PhoneIcon className="w-5 h-5 text-volt-deep" />
+              </span>
+              <span className="flex-1 text-left text-sm">Continue with Phone Number</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="opacity-30">
+                <path d="M9 6l6 6-6 6" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Signup link */}
+          <div className="mt-10 flex items-center justify-center gap-2">
+            <span className="text-sm text-volt-deep/50">Don't have an account?</span>
+            <Link
+              to="/signup"
+              className="rounded-lg px-3 py-1.5 text-sm font-semibold text-volt-deep transition hover:bg-volt-deep/5 active:scale-95"
+            >
+              Sign Up →
+            </Link>
+          </div>
 
         </div>
       </div>
     </div>
   );
-};
-
-export default Login;
+}
