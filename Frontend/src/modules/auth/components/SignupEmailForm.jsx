@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const emailInitialValues = {
     fullName: '',
@@ -179,9 +180,9 @@ export default function SignupEmailPage({ onBack, onSubmitted }) {
 
             <p className="mt-6 text-center text-sm text-volt-deep/60">
                 Already have an account?{' '}
-                <a href="/login" className="font-medium text-volt-dim hover:underline">
+                <Link to="/login" className="font-medium text-volt-dim hover:underline">
                     Log in
-                </a>
+                </Link>
             </p>
         </div>
     )

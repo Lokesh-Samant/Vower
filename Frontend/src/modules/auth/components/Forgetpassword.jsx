@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 /**
  * ==========================================
@@ -205,13 +206,13 @@ export default function ForgotPasswordPage() {
         {/* BACK TO LOGIN LINK                                                 */}
         {/* ------------------------------------------------------------------ */}
         <div className="mt-6 text-center text-xs border-t border-slate-100 pt-4">
-          <a
-            href="/login"
+          <Link
+            to="/login"
             className="inline-flex items-center gap-2 text-zinc-800 hover:text-black font-semibold transition-colors"
           >
             <ArrowLeftIcon />
             <span>Back to Sign In</span>
-          </a>
+          </Link>
         </div>
 
       </div>
