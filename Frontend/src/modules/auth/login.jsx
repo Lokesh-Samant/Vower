@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import BrandPanel from './components/BrandPanel.jsx';
+import useGoogleAuth from './hooks/useGoogleAuth' // <-- Import the hook
 
 /**
  * ==========================================
@@ -69,6 +70,21 @@ export default function AuthPage() {
     password: '',
   });
 
+  const googleLogin = useGoogleAuth({
+  onSuccess: (response) => {
+    console.log("Google Login Success:", response);
+
+    // TODO:
+    // 1. Send the token to your backend
+    // 2. Store JWT/session
+    // 3. Navigate to dashboard
+  },
+
+  onError: (error) => {
+    console.error("Google Login Failed:", error);
+  },
+});
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -79,7 +95,7 @@ export default function AuthPage() {
   };
 
   const handleGoogleSignIn = () => {
-    console.log('Initiating Google Sign-In...');
+    googleLogin()
   };
 
   const handlePhoneSignIn = () => {
