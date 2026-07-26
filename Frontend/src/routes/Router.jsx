@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Login from "../modules/auth/login";
+import Signup from "../modules/auth/Signup";
 
 export default function Router() {
   return (
@@ -9,6 +10,7 @@ export default function Router() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
     </BrowserRouter>
   );
