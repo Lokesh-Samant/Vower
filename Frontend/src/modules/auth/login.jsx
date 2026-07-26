@@ -69,7 +69,7 @@ const Login = () => {
 
         <div className="space-y-4 max-w-md z-10">
           <h2 className="text-3xl font-bold tracking-tight text-zinc-100 leading-tight">
-           Powering Every Promise
+           Powering Every Promises
           </h2>
           <p className="text-zinc-400 text-sm leading-relaxed">
             Manage your local environments, stream system diagnostics, and coordinate team deployments in one unified dashboard.
