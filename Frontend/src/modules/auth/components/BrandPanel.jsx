@@ -22,7 +22,7 @@ export default function BrandPanel() {
           style={{ filter: 'invert(1) contrast(2) brightness(1.5)', mixBlendMode: 'screen' }}
         />
         <p className="mt-3 text-lg text-white/50">
-          &ldquo;Powering every promise.&rdquo;
+          &ldquo;Powering Every Promise&rdquo;
         </p>
       </div>
 
