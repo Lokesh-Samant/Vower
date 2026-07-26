@@ -12,6 +12,7 @@ export default function Router() {
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        
         {/* Component name MUST start with Capital 'F' */}
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
       </Routes>
