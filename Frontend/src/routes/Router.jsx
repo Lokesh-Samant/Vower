@@ -5,7 +5,10 @@ import Login from "../modules/auth/login";
 import ForgotPasswordPage from "../modules/auth/Forgetpassword";
 import ProfilePage from "../modules/profile/Profile";
 import EditProfilePage from "../modules/profile/EditProfile";
-import Settings from "../modules/settings/Settings";
+import SettingsPage from "../modules/settings/SettingsPage";
+import ChangePasswordPage from "../modules/settings/ChangePassword";
+import EditEmailPage from "../modules/settings/EditEmail";
+import ChangePhonePage from "../modules/settings/ChangePhone";
 import Reservations from "../modules/reservations/Reservations";
 import MyVehicle from "../modules/vehicle/Vehicle";
 import ChargingHistory from "../modules/history/History";
@@ -26,7 +29,10 @@ export default function Router() {
         <Route path="/edit-profile" element={<EditProfilePage />} />
         
         {/* Settings */}
-        <Route path="/settings" element={<Settings />} />
+        <Route path="/settings" element={<SettingsPage />} />
+        <Route path="/settings/change-password" element={<ChangePasswordPage />} />
+        <Route path="/settings/edit-email" element={<EditEmailPage />} />
+        <Route path="/settings/change-phone" element={<ChangePhonePage />} />
         
         {/* Reservations */}
         <Route path="/reservations" element={<Reservations />} />
