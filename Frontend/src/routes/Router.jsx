@@ -6,6 +6,7 @@ import ProfilePage from "../modules/profile/ProfilePage";
 import EditProfilePage from "../modules/profile/EditProfilePage";
 import Signup from "../modules/auth/Signup";
 import ForgotPasswordPage from "../modules/auth/components/Forgetpassword";
+import HomePage from "../modules/home/home";
 
 export default function Router() {
   return (
