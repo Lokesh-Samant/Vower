@@ -12,15 +12,14 @@ export default function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Root: send authenticated users to /home, others to /login */}
-        <Route
-          path="/"
+      
+        <Route path="/"
           element={
-            isAuthenticated()
-              ? <Navigate to="/home" replace />
-              : <Navigate to="/login" replace />
-          }
-        />
+            isAuthenticated() ? (
+              <Navigate to="/home" replace />
+            ) : (
+              <Navigate to="/login" replace />
+            )}/>
 
         {/* Public auth routes */}
         <Route path="/login" element={<LoginPage />} />
@@ -28,32 +27,10 @@ export default function Router() {
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
 
         {/* Protected app routes — require valid JWT */}
-        <Route
-          path="/home"
-          element={
-            <PrivateRoute>
-              <HomePage />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/profile"
-          element={
-            <PrivateRoute>
-              <ProfilePage />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/profile/edit"
-          element={
-            <PrivateRoute>
-              <EditProfilePage />
-            </PrivateRoute>
-          }
-        />
+        <Route path="/home" element={ <PrivateRoute> <HomePage /></PrivateRoute> }/>
+        <Route path="/profile" element={ <PrivateRoute> <ProfilePage /></PrivateRoute> }/>
+        <Route path="/profile/edit" element={ <PrivateRoute> <EditProfilePage /></PrivateRoute> }/>
 
-        {/* Catch-all: redirect unknown paths to login */}
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
     </BrowserRouter>
