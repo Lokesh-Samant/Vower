@@ -199,6 +199,16 @@ export default function ProfilePage() {
 
   const handleMenuItemClick = (itemId) => {
     console.log(`Navigating to: ${itemId}`);
+    const routes = {
+      'settings': '/settings',
+      'reservations': '/reservations',
+      'vehicle': '/my-vehicle',
+      'history': '/charging-history',
+      'help': '/help'
+    };
+    if (routes[itemId]) {
+      navigate(routes[itemId]);
+    }
   };
 
   const handleEditProfile = () => {
