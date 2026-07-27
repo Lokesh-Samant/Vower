@@ -1,11 +1,12 @@
 import { useEffect, useRef } from "react";
+import Google from '../../../apis/endpoints'
 
 export default function useGoogleAuth({ onSuccess, onError }) {
   const tokenClient = useRef(null);
 
   useEffect(() => {
     tokenClient.current = google.accounts.oauth2.initTokenClient({
-      client_id: "use_client_id here ",
+       client_id: Google.CLIENT_ID,
       scope: "openid email profile",
       callback: (response) => {
         if (response.error) {
