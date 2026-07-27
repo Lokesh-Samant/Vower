@@ -4,17 +4,36 @@ import MethodSelect from './MethodSelect.jsx'
 import SignupEmailPage from './SignupEmailForm.jsx'
 import PhoneForm from './PhoneForm.jsx'
 import OtpStep from './OtpStep.jsx'
+import useGoogleAuth from '../hooks/useGoogleAuth' // <-- Import the hook
 
 export default function Signup() {
   const [step, setStep] = useState('method')
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
 
+  // Initialise the hook once
+  const googleLogin = useGoogleAuth({
+  onSuccess: (response) => {
+    console.log("Google Login Success:", response);
+
+    // TODO:
+    // 1. Send the token to your backend
+    // 2. Store JWT/session
+    // 3. Navigate to dashboard
+  },
+
+  onError: (error) => {
+    console.error("Google Login Failed:", error);
+  },
+});
+
   function handleMethodSelect(method) {
-    if (method === 'email') setStep('emailForm')
-    else if (method === 'phone') setStep('phoneForm')
-    else if (method === 'google') {
-      alert('Google sign-up coming soon!')
+    if (method === 'email') {
+      setStep('emailForm')
+    } else if (method === 'phone') {
+      setStep('phoneForm')
+    } else if (method === 'google') {
+      googleLogin() // <-- Launch Google Sign-In
     }
   }
 
