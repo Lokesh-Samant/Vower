@@ -1,12 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-/**
- * ==========================================
- * SVG ICON COMPONENTS
- * ==========================================
- */
-
 const EyeIcon = ({ className = "w-5 h-5" }) => (
   <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -26,11 +20,6 @@ const ArrowLeftIcon = ({ className = "w-4 h-4" }) => (
   </svg>
 );
 
-/**
- * ==========================================
- * FORGOT PASSWORD COMPONENT
- * ==========================================
- */
 export default function ForgotPasswordPage() {
   const [step, setStep] = useState(1);
   const [showPassword, setShowPassword] = useState(false);
@@ -42,7 +31,7 @@ export default function ForgotPasswordPage() {
   });
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const handleRequestOTP = (e) => {
@@ -58,18 +47,15 @@ export default function ForgotPasswordPage() {
 
   return (
     <div className="min-h-screen w-full bg-[#F5F5F7] flex items-center justify-center p-4 sm:p-6 font-sans text-zinc-900 overflow-x-hidden">
-
       <div className="w-full max-w-sm flex flex-col items-center">
         
         {/* LOGO & HEADING SECTION */}
-        <div className="text-center pt-2 mb-6 flex flex-col items-center justify-center relative w-full">
-          
+        <div className="text-center pt-8 mb-6 flex flex-col items-center justify-center relative w-full">
           <img 
             src="/logo.jpeg" 
             alt="Vower Logo" 
             className="w-24 h-24 sm:w-28 sm:h-28 object-cover rounded-[2rem] shadow-lg z-10"
           />
-
           <div className="flex justify-center -mt-8 sm:-mt-10 z-20 pointer-events-none">
             <img 
               src="/WORDLOGON.png" 
@@ -77,11 +63,9 @@ export default function ForgotPasswordPage() {
               className="h-28 sm:h-36 w-auto object-contain drop-shadow-md"
             />
           </div>
-
           <p className="text-[11px] sm:text-[12px] text-slate-400 font-bold tracking-[0.2em] uppercase -mt-3">
             POWERING EVERY PROMISE
           </p>
-
           <h2 className="text-xl sm:text-2xl font-bold text-zinc-800 mt-5 tracking-tight">
             {step === 1 ? 'Reset Password' : 'Verify Email OTP'}
           </h2>
@@ -94,8 +78,7 @@ export default function ForgotPasswordPage() {
 
         {/* FORMS SECTION */}
         <div className="w-full">
-          {/* STEP 1: Enter Email */}
-          {step === 1 && (
+          {step === 1 ? (
             <form onSubmit={handleRequestOTP} className="space-y-4">
               <div>
                 <label className="block text-xs font-semibold text-zinc-600 mb-1.5 ml-1">
@@ -119,10 +102,7 @@ export default function ForgotPasswordPage() {
                 Send OTP Code
               </button>
             </form>
-          )}
-
-          {/* STEP 2: Enter OTP & Reset Password */}
-          {step === 2 && (
+          ) : (
             <form onSubmit={handleResetPassword} className="space-y-4">
               <div>
                 <div className="flex justify-between items-center mb-1.5 px-1">
@@ -184,7 +164,6 @@ export default function ForgotPasswordPage() {
           )}
         </div>
 
-        {/* BACK TO LOGIN LINK */}
         <div className="mt-8 text-center text-xs">
           <Link
             to="/login"
