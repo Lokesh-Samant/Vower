@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "../modules/auth/login";
 import Signup from "../modules/auth/Signup";
 import ForgotPasswordPage from "../modules/auth/components/Forgetpassword";
+import HomePage from "../modules/home/home";
 
 export default function Router() {
   return (
@@ -12,7 +13,11 @@ export default function Router() {
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/forgotpassword" element={<ForgotPasswordPage />} />
+       
+        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+        
+       
+        <Route path="/home" element={<HomePage />} />
       </Routes>
     </BrowserRouter>
   );
