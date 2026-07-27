@@ -13,7 +13,6 @@ export default function Router() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         
-        {/* FIXED: Small 'f' aur hyphen (-) add kar diya hai */}
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
       </Routes>
     </BrowserRouter>
