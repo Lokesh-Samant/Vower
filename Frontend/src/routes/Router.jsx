@@ -1,24 +1,28 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-import Login from "../modules/auth/login";
+import { LoginPage, SignupPage, ForgotPasswordPage } from "../modules/auth";
 import ProfilePage from "../modules/profile/ProfilePage";
 import EditProfilePage from "../modules/profile/EditProfilePage";
-import Signup from "../modules/auth/Signup";
-import ForgotPasswordPage from "../modules/auth/components/Forgetpassword";
 import HomePage from "../modules/home/home";
 
 export default function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/login" element={<Login />} />
+        {/* Auth routes */}
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+
+        {/* App routes */}
+        <Route path="/home" element={<HomePage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/profile/edit" element={<EditProfilePage />} />
-        <Route path="/signup" element={<Signup />} />
-        
-        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+
+        {/* Catch-all: redirect unknown paths to login */}
+        <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
     </BrowserRouter>
   );
