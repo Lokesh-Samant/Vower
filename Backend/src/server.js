@@ -1,33 +1,40 @@
+require("dotenv").config();
+// Package imported 
 const express = require("express");
-const { PrismaClient } = require("@prisma/client");
+const cors = require("cors");
+const prisma = require("./config/prisma");
 const app = express();
 const PORT = 5000;
-const prisma = new PrismaClient();
 
-const Authrouter = require('./modules/Authentication/auth.routes')
+//External Imported modules 
+const Authrouter = require("./modules/Authentication/auth.routes");
 
-// Middleware
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://vower-kappa.vercel.app",
+];
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+    credentials: true,
+  }),
+);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-// Authentication Routes
-app.use('/api/auth/', Authrouter);
-
-// Basic route
+app.use("/auth", Authrouter);
 app.get("/", (req, res) => {
   res.send("Server is running 🚀");
-}); 
-
-
-
-
+});
 
 async function startServer() {
   try {
     await prisma.$connect();
-    console.log("✅ Database connected successfully");
 
+    console.log("✅ Database connected successfully");
     app.listen(PORT, () => {
       console.log(`🚀 Server running on port ${PORT}`);
     });
