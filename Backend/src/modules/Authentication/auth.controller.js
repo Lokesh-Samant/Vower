@@ -5,6 +5,7 @@ const loginPhoneService = require("./services/loginPhone.service");
 const sendOTPService = require("./services/sendOTP.service");
 const verifyOTPService = require("./services/verifyOTP.service");
 const googleAuthService = require("./services/googleOuath.service");
+const logoutService = require("./services/logout.service")
 
 const { getDeviceInfo } = require("../../utils/DeviceInfo");
 
@@ -146,7 +147,27 @@ const googleAuth = async (req, res) => {
   }
 };
 
+const logout = async (req, res) => {
+  try {
+    const { email, otp } = req.body;
+
+    const result = await verifyOTPService({
+      email,
+      otp,
+    });
+
+    return res.status(result.code).json({
+      msg: result.msg,
+    });
+  } catch (error) {
+    console.error("Logout unsuccesfull", error);
+    return res.status(500).json({ msg: "Internal server error" });
+  }
+};
+
+
 module.exports = {
+  logout,
   signUpEmail,
   signUpPhone,
   loginEmail,
