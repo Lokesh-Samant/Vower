@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Wallet,
   Bell,
@@ -9,25 +10,25 @@ import {
   Menu,
   X
 } from "lucide-react";
-import logoImage from "../../../public/logo.jpeg";
 
 const Header = () => {
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
   const [desktopSidebarOpen, setDesktopSidebarOpen] = useState(false);
   const [activeItem, setActiveItem] = useState("overview");
+  const navigate = useNavigate();
 
   const handleNavigate = (routeKey, path) => {
     setActiveItem(routeKey);
     setProfileDropdownOpen(false);
     setDesktopSidebarOpen(false);
-    console.log(`Navigating to: ${path}`);
+    navigate(path);
   };
 
   const desktopMenuLinks = [
-    { id: 1, label: "Admin Dashboard", path: "/admin" },
-    { id: 2, label: "Analytics & Reports", path: "/analytics" },
-    { id: 3, label: "Team Management", path: "/team" },
-    { id: 4, label: "Billing & Invoices", path: "/billing" },
+    { id: 1, label: "Admin Dashboard", path: "/coming-soon" },
+    { id: 2, label: "Analytics & Reports", path: "/coming-soon" },
+    { id: 3, label: "Team Management", path: "/coming-soon" },
+    { id: 4, label: "Billing & Invoices", path: "/coming-soon" },
   ];
 
   return (
@@ -40,12 +41,12 @@ const Header = () => {
         
         <div className="flex items-center gap-2 sm:gap-4">
           <img 
-            src={logoImage} 
+            src="/logo.jpeg" 
             alt="Header Logo" 
             className="w-8 h-8 sm:w-10 sm:h-10 rounded-md object-cover shrink-0 bg-neutral-100"
           />
           <button 
-            onClick={() => handleNavigate("wallet", "/wallet")}
+            onClick={() => handleNavigate("wallet", "/coming-soon")}
             className="flex items-center gap-1 sm:gap-1.5 rounded-full bg-black text-white px-2.5 sm:px-3.5 py-1.5 text-xs sm:text-sm font-medium hover:bg-[#B4FF39] hover:text-black transition-colors"
           >
             <Wallet size={14} className="shrink-0" />
@@ -55,7 +56,7 @@ const Header = () => {
 
         <div className="flex items-center gap-1.5 sm:gap-3">
           <button 
-            onClick={() => handleNavigate("notifications", "/notifications")}
+            onClick={() => handleNavigate("notifications", "/coming-soon")}
             className="relative p-2 rounded-full hover:bg-black/5 transition-colors"
           >
             <Bell size={18} />
@@ -78,7 +79,7 @@ const Header = () => {
                   <button onClick={() => handleNavigate("profile", "/profile")} className="w-full px-4 py-2.5 text-left text-sm flex items-center gap-2.5 hover:bg-neutral-100">
                     <User size={16} /> Profile Details
                   </button>
-                  <button onClick={() => handleNavigate("settings", "/settings")} className="w-full px-4 py-2.5 text-left text-sm flex items-center gap-2.5 hover:bg-neutral-100">
+                  <button onClick={() => handleNavigate("settings", "/coming-soon")} className="w-full px-4 py-2.5 text-left text-sm flex items-center gap-2.5 hover:bg-neutral-100">
                     <Sliders size={16} /> Preferences
                   </button>
                   <hr className="my-1 border-black/10" />
@@ -106,14 +107,14 @@ const Header = () => {
           </button>
           
           <div className="flex items-center gap-3">
-             <img src={logoImage} alt="Brand" className="w-8 h-8 rounded object-cover" />
+             <img src="/logo.jpeg" alt="Brand" className="w-8 h-8 rounded object-cover" />
              <span className="font-bold text-lg tracking-tight">Vower</span>
           </div>
         </div>
 
         <div className="flex items-center gap-6">
-           <button onClick={() => handleNavigate("wallet", "/wallet")} className="font-medium text-sm hover:opacity-70">Wallet</button>
-           <button onClick={() => handleNavigate("notifications", "/notifications")} className="font-medium text-sm hover:opacity-70">Notifications</button>
+           <button onClick={() => handleNavigate("wallet", "/coming-soon")} className="font-medium text-sm hover:opacity-70">Wallet</button>
+           <button onClick={() => handleNavigate("notifications", "/coming-soon")} className="font-medium text-sm hover:opacity-70">Notifications</button>
            
            {/* Fix: Desktop Profile Dropdown properly implemented here */}
            <div className="relative">
@@ -131,7 +132,7 @@ const Header = () => {
                    <button onClick={() => handleNavigate("profile", "/profile")} className="w-full px-4 py-2.5 text-left text-sm flex items-center gap-2.5 hover:bg-neutral-100 transition-colors">
                      <User size={16} /> Profile Details
                    </button>
-                   <button onClick={() => handleNavigate("settings", "/settings")} className="w-full px-4 py-2.5 text-left text-sm flex items-center gap-2.5 hover:bg-neutral-100 transition-colors">
+                   <button onClick={() => handleNavigate("settings", "/coming-soon")} className="w-full px-4 py-2.5 text-left text-sm flex items-center gap-2.5 hover:bg-neutral-100 transition-colors">
                      <Sliders size={16} /> Preferences
                    </button>
                    <hr className="my-1 border-black/10" />
