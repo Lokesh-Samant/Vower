@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ChevronLeft, HelpCircle, MessageSquare, FileText, BookOpen, Phone, Mail, MessageCircle, Clock } from 'lucide-react';
+import { ChevronLeft, BookOpen, Phone, FileText, MessageSquare, Zap, CreditCard, Car, HelpCircle } from 'lucide-react';
 import './HelpPage.css';
 
 const HelpPage = () => {
@@ -48,26 +48,37 @@ const HelpPage = () => {
 
   const menuItems = [
     {
-      id: 'faq',
       icon: <BookOpen size={20} />,
       label: 'Frequently Asked Questions',
       action: () => document.getElementById('faq-section')?.scrollIntoView({ behavior: 'smooth' })
     },
     {
-      id: 'contact',
       icon: <Phone size={20} />,
       label: 'Contact Support',
       action: () => navigate('/help/contact')
     },
     {
-      id: 'raise-ticket',
+      icon: <Zap size={20} />,
+      label: 'Charging Guide',
+      action: () => navigate('/help/charging-guide')
+    },
+    {
+      icon: <Car size={20} />,
+      label: 'Reservation Help',
+      action: () => navigate('/help/reservation-help')
+    },
+    {
+      icon: <CreditCard size={20} />,
+      label: 'Payment Help',
+      action: () => navigate('/help/payment-help')
+    },
+    {
       icon: <FileText size={20} />,
       label: 'Raise a New Ticket',
       action: () => navigate('/help/raise-ticket'),
       highlight: true
     },
     {
-      id: 'my-tickets',
       icon: <MessageSquare size={20} />,
       label: 'My Tickets',
       action: () => navigate('/help/my-tickets')
@@ -121,9 +132,9 @@ const HelpPage = () => {
         <section className="help-menu-section">
           <h2>Support Options</h2>
           <div className="help-menu-list">
-            {menuItems.map((item) => (
+            {menuItems.map((item, index) => (
               <div 
-                key={item.id} 
+                key={index} 
                 className={`help-menu-item ${item.highlight ? 'highlight' : ''}`}
                 onClick={item.action}
               >

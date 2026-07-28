@@ -27,6 +27,9 @@ import ContactSupport from "../modules/help/pages/ContactSupport/ContactSupport"
 import RaiseTicket from "../modules/help/pages/RaiseTicket/RaiseTicket";
 import MyTickets from "../modules/help/pages/MyTickets/MyTickets";
 import TicketDetails from "../modules/help/pages/TicketDetails/TicketDetails";
+import ChargingGuide from "../modules/help/pages/ChargingGuide/ChargingGuide";
+import ReservationHelp from "../modules/help/pages/ReservationHelp/ReservationHelp";
+import PaymentHelp from "../modules/help/pages/PaymentHelp/PaymentHelp";
 
 import Layout from "../layout";
 
@@ -85,6 +88,9 @@ export default function Router() {
           <Route path="/help/raise-ticket" element={<RaiseTicket />} />
           <Route path="/help/my-tickets" element={<MyTickets />} />
           <Route path="/help/ticket/:ticketId" element={<TicketDetails />} />
+          <Route path="/help/charging-guide" element={<ChargingGuide />} />
+          <Route path="/help/reservation-help" element={<ReservationHelp />} />
+          <Route path="/help/payment-help" element={<PaymentHelp />} />
           <Route path="/privacy" element={<PrivacyPage />} />
         </Route>
 
