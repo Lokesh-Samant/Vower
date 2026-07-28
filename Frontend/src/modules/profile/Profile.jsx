@@ -1,12 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-/**
- * ==========================================
- * SVG ICON COMPONENTS
- * ==========================================
- */
-
 // Back Arrow Icon
 const BackArrowIcon = ({ className = "w-6 h-6" }) => (
   <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -103,12 +97,8 @@ const ProfileIcon = ({ className = "w-6 h-6", filled = false }) => (
   </svg>
 );
 
-/**
- * ==========================================
- * MENU ITEM COMPONENT
- * ==========================================
- */
-const MenuItem = ({ icon: Icon, title, description, onClick }) => {
+// Menu Item Component
+const MenuItem = ({ icon: Icon, title, onClick }) => {
   const [isPressed, setIsPressed] = useState(false);
 
   return (
@@ -130,19 +120,14 @@ const MenuItem = ({ icon: Icon, title, description, onClick }) => {
       onTouchEnd={() => setIsPressed(false)}
       onClick={onClick}
     >
-      {/* Left: Icon */}
       <div className="flex items-center gap-3">
         <div className="text-zinc-800">
           <Icon className="w-6 h-6" />
         </div>
-        
-        {/* Center: Title */}
         <span className="text-[#111111] text-base font-medium">
           {title}
         </span>
       </div>
-      
-      {/* Right: Chevron */}
       <div className={`text-zinc-400 transition-transform duration-200 ${isPressed ? 'translate-x-1' : ''}`}>
         <ChevronRightIcon className="w-5 h-5" />
       </div>
@@ -150,11 +135,7 @@ const MenuItem = ({ icon: Icon, title, description, onClick }) => {
   );
 };
 
-/**
- * ==========================================
- * BOTTOM NAVIGATION COMPONENT
- * ==========================================
- */
+// Bottom Navigation Component
 const BottomNavigation = ({ activeTab, onTabChange }) => {
   const navItems = [
     { id: 'home', icon: HomeIcon, label: 'Home' },
@@ -182,7 +163,6 @@ const BottomNavigation = ({ activeTab, onTabChange }) => {
                 transition-all duration-200 ease-out
                 ${isActive ? 'scale-110' : 'scale-100 opacity-60 hover:opacity-80'}
               `}
-              style={{ transform: isActive ? 'scale(1.1)' : 'scale(1)' }}
             >
               <item.icon 
                 className={`w-6 h-6 ${isActive ? 'text-white' : 'text-white'}`} 
@@ -196,40 +176,43 @@ const BottomNavigation = ({ activeTab, onTabChange }) => {
   );
 };
 
-/**
- * ==========================================
- * MAIN PROFILE PAGE COMPONENT
- * ==========================================
- */
+// Main Profile Page Component
 export default function ProfilePage() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('profile');
   const [isEditPressed, setIsEditPressed] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Simulate avatar loading
   React.useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 300);
     return () => clearTimeout(timer);
   }, []);
 
   const menuItems = [
-    { id: 'settings', icon: SettingsIcon, title: 'Settings', description: 'Manage app preferences, notifications, language, payment methods, and account settings.' },
-    { id: 'reservations', icon: CalendarIcon, title: 'My Reservations', description: 'View all upcoming charging slot bookings, active reservations, and scheduled charging sessions.' },
-    { id: 'vehicle', icon: VehicleIcon, title: 'My Vehicle', description: 'Manage registered EVs, add new vehicles, edit vehicle information, battery capacity, connector compatibility, and preferred vehicle.' },
-    { id: 'history', icon: BoltIcon, title: 'Charging History', description: 'Display previous charging sessions including station name, date, time, energy consumed, cost paid, and duration.' },
-    { id: 'help', icon: HelpIcon, title: 'Help', description: 'Support center including FAQs, Contact Support, Report Issue, and Live Chat (future ready).' },
-    { id: 'privacy', icon: LockIcon, title: 'Privacy Policy', description: "Open the application's privacy policy and data protection information." },
+    { id: 'settings', icon: SettingsIcon, title: 'Settings' },
+    { id: 'reservations', icon: CalendarIcon, title: 'My Reservations' },
+    { id: 'vehicle', icon: VehicleIcon, title: 'My Vehicle' },
+    { id: 'history', icon: BoltIcon, title: 'Charging History' },
+    { id: 'help', icon: HelpIcon, title: 'Help' },
+    { id: 'privacy', icon: LockIcon, title: 'Privacy Policy' },
   ];
 
   const handleMenuItemClick = (itemId) => {
     console.log(`Navigating to: ${itemId}`);
-    // Add navigation logic here
+    const routes = {
+      'settings': '/settings',
+      'reservations': '/reservations',
+      'vehicle': '/my-vehicle',
+      'history': '/charging-history',
+      'help': '/help'
+    };
+    if (routes[itemId]) {
+      navigate(routes[itemId]);
+    }
   };
 
   const handleEditProfile = () => {
-    console.log('Edit Profile clicked');
-    // Add edit profile logic here
+    navigate('/edit-profile');
   };
 
   const handleBack = () => {
@@ -238,13 +221,11 @@ export default function ProfilePage() {
 
   return (
     <div className="min-h-screen w-full bg-[#FFFFFF] font-sans text-[#111111] overflow-x-hidden">
-      {/* Fade-in animation wrapper */}
       <div className="animate-fade-in">
         
         {/* HEADER */}
         <header className="sticky top-0 bg-[#FFFFFF] z-40 px-4 pt-4 pb-2">
           <div className="flex items-center justify-between max-w-lg mx-auto" style={{ height: '56px' }}>
-            {/* Back Button */}
             <button
               onClick={handleBack}
               className="p-2 -ml-2 rounded-full hover:bg-slate-50 active:scale-95 transition-all duration-200"
@@ -253,12 +234,10 @@ export default function ProfilePage() {
               <BackArrowIcon className="w-6 h-6 text-[#111111]" />
             </button>
             
-            {/* Title */}
             <h1 className="text-xl font-semibold text-[#111111]">
               Profile
             </h1>
             
-            {/* Empty spacer for balance */}
             <div className="w-8" />
           </div>
         </header>
@@ -268,7 +247,6 @@ export default function ProfilePage() {
           
           {/* PROFILE SECTION */}
           <section className="py-6 text-center">
-            {/* Profile Picture */}
             <div className="relative inline-block mb-4">
               <div 
                 className={`
@@ -293,7 +271,6 @@ export default function ProfilePage() {
                 )}
               </div>
               
-              {/* Camera/Edit Icon Overlay */}
               <button
                 className="
                   absolute -bottom-1 -right-1 
@@ -310,17 +287,14 @@ export default function ProfilePage() {
               </button>
             </div>
 
-            {/* User Name */}
             <h2 className="text-[22px] font-bold text-[#111111] mb-1">
               Rahul Sharma
             </h2>
 
-            {/* Username */}
             <p className="text-sm font-light text-[#8A8A8A] mb-5">
               @rahulsharma
             </p>
 
-            {/* Edit Profile Button */}
             <button
               onClick={handleEditProfile}
               onMouseDown={() => setIsEditPressed(true)}
@@ -353,7 +327,6 @@ export default function ProfilePage() {
                 key={item.id}
                 icon={item.icon}
                 title={item.title}
-                description={item.description}
                 onClick={() => handleMenuItemClick(item.id)}
               />
             ))}
@@ -366,7 +339,6 @@ export default function ProfilePage() {
 
       </div>
 
-      {/* CUSTOM STYLES FOR ANIMATIONS */}
       <style>{`
         @keyframes fade-in {
           from {
