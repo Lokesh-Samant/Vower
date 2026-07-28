@@ -9,7 +9,6 @@ import {
   Menu,
   X
 } from "lucide-react";
-import logoImage from "../../../public/logo.jpeg";
 
 const Header = () => {
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
@@ -40,7 +39,7 @@ const Header = () => {
         
         <div className="flex items-center gap-2 sm:gap-4">
           <img 
-            src={logoImage} 
+            src="/logo.jpeg" 
             alt="Header Logo" 
             className="w-8 h-8 sm:w-10 sm:h-10 rounded-md object-cover shrink-0 bg-neutral-100"
           />
@@ -106,7 +105,7 @@ const Header = () => {
           </button>
           
           <div className="flex items-center gap-3">
-             <img src={logoImage} alt="Brand" className="w-8 h-8 rounded object-cover" />
+             <img src="/logo.jpeg" alt="Brand" className="w-8 h-8 rounded object-cover" />
              <span className="font-bold text-lg tracking-tight">Vower</span>
           </div>
         </div>
