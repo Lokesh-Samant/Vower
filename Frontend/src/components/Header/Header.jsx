@@ -28,9 +28,11 @@ const Header = () => {
   const logouthandler = () => {
     
 
-
+  alert("Logout clicked");
   localStorage.removeItem("vower_token");
-  window.location.href = "/login";
+  alert(localStorage.getItem("vower_token"));
+  navigate("/login");
+
 
   }
 
