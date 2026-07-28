@@ -26,13 +26,9 @@ const Header = () => {
   };
 
   const logouthandler = () => {
-    
-
-  alert("Logout clicked");
+  alert("Logout Successfully");
   localStorage.removeItem("vower_token");
-  alert(localStorage.getItem("vower_token"));
   navigate("/login");
-
 
   }
 
@@ -95,7 +91,7 @@ const Header = () => {
                     <Sliders size={16} /> Preferences
                   </button>
                   <hr className="my-1 border-black/10" />
-                  <button onClick={() => { setProfileDropdownOpen(false); console.log("Logging out..."); }} className="w-full px-4 py-2.5 text-left text-sm flex items-center gap-2.5 hover:bg-red-50 text-red-600">
+                  <button onClick={() => { logouthandler() }} className="w-full px-4 py-2.5 text-left text-sm flex items-center gap-2.5 hover:bg-red-50 text-red-600">
                     <LogOut size={16} /> Logout
                   </button>
                 </div>
