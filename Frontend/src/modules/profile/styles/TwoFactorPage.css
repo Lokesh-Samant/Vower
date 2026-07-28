@@ -7,7 +7,7 @@
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
 }
 
-.2fa-header {
+.tfa-header {
     display: flex;
     align-items: center;
     gap: 16px;
@@ -20,7 +20,7 @@
     z-index: 100;
 }
 
-.2fa-header__back {
+.tfa-header__back {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -34,25 +34,25 @@
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.2fa-header__back:hover {
+.tfa-header__back:hover {
     background: rgba(255, 255, 255, 0.15);
     transform: translateX(-4px);
 }
 
-.2fa-header__title {
+.tfa-header__title {
     font-size: 20px;
     font-weight: 600;
     margin: 0;
     letter-spacing: -0.3px;
 }
 
-.2fa-content {
+.tfa-content {
     padding: 24px;
     max-width: 500px;
     margin: 0 auto;
 }
 
-.2fa-status-card {
+.tfa-status-card {
     display: flex;
     align-items: center;
     gap: 16px;
@@ -64,12 +64,12 @@
     transition: all 0.3s ease;
 }
 
-.2fa-status-card--enabled {
+.tfa-status-card--enabled {
     background: rgba(0, 212, 170, 0.1);
     border-color: rgba(0, 212, 170, 0.3);
 }
 
-.2fa-status-card__icon {
+.tfa-status-card__icon {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -80,29 +80,29 @@
     color: rgba(255, 255, 255, 0.9);
 }
 
-.2fa-status-card--enabled .2fa-status-card__icon {
+.tfa-status-card--enabled .tfa-status-card__icon {
     background: rgba(0, 212, 170, 0.2);
     color: #00d4aa;
 }
 
-.2fa-status-card__info {
+.tfa-status-card__info {
     flex: 1;
 }
 
-.2fa-status-card__title {
+.tfa-status-card__title {
     font-size: 16px;
     font-weight: 600;
     margin: 0 0 4px 0;
     color: #ffffff;
 }
 
-.2fa-status-card__desc {
+.tfa-status-card__desc {
     font-size: 13px;
     color: rgba(255, 255, 255, 0.6);
     margin: 0;
 }
 
-.2fa-toggle {
+.tfa-toggle {
     position: relative;
     width: 52px;
     height: 28px;
@@ -113,11 +113,11 @@
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.2fa-toggle--on {
+.tfa-toggle--on {
     background: linear-gradient(135deg, #00d4aa 0%, #00a885 100%);
 }
 
-.2fa-toggle__thumb {
+.tfa-toggle__thumb {
     position: absolute;
     top: 3px;
     left: 3px;
@@ -129,22 +129,22 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.2fa-toggle--on .2fa-toggle__thumb {
+.tfa-toggle--on .tfa-toggle__thumb {
     transform: translateX(24px);
 }
 
-.2fa-section-title {
+tfa--section-title {
     font-size: 15px;
     font-weight: 600;
     color: rgba(255, 255, 255, 0.8);
     margin: 0 0 16px 0;
 }
 
-.2fa-methods {
+.tfa-methods {
     margin-bottom: 24px;
 }
 
-.2fa-method-card {
+.tfa-method-card {
     display: flex;
     align-items: center;
     gap: 12px;
@@ -155,7 +155,7 @@
     color: rgba(255, 255, 255, 0.9);
 }
 
-.2fa-setup {
+tfa--setup {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -163,27 +163,27 @@
     margin-top: 24px;
 }
 
-.2fa-setup-title {
+tfa--setup-title {
     font-size: 18px;
     font-weight: 600;
     color: #ffffff;
     margin: 0 0 8px 0;
 }
 
-.2fa-setup-desc {
+tfa--setup-desc {
     font-size: 14px;
     color: rgba(255, 255, 255, 0.6);
     margin: 0 0 20px 0;
 }
 
-.2fa-methods-list {
+.tfa-methods-list {
     display: flex;
     flex-direction: column;
     gap: 12px;
     margin-bottom: 20px;
 }
 
-.2fa-method-option {
+.tfa-method-option {
     display: flex;
     align-items: center;
     gap: 14px;
@@ -195,17 +195,17 @@
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.2fa-method-option:hover {
+.tfa-method-option:hover {
     background: rgba(255, 255, 255, 0.08);
     border-color: rgba(255, 255, 255, 0.2);
 }
 
-.2fa-method-option--selected {
+.tfa-method-option--selected {
     background: rgba(0, 212, 170, 0.1);
     border-color: rgba(0, 212, 170, 0.4);
 }
 
-.2fa-method-option__icon {
+.tfa-method-option__icon {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -216,34 +216,34 @@
     color: rgba(255, 255, 255, 0.9);
 }
 
-.2fa-method-option--selected .2fa-method-option__icon {
+.tfa-method-option--selected .tfa-method-option__icon {
     background: rgba(0, 212, 170, 0.2);
     color: #00d4aa;
 }
 
-.2fa-method-option__info {
+.tfa-method-option__info {
     flex: 1;
 }
 
-.2fa-method-option__label {
+.tfa-method-option__label {
     font-size: 15px;
     font-weight: 600;
     color: #ffffff;
     margin: 0 0 4px 0;
 }
 
-.2fa-method-option__desc {
+.tfa-method-option__desc {
     font-size: 13px;
     color: rgba(255, 255, 255, 0.5);
     margin: 0;
 }
 
-.2fa-method-option__check {
+.tfa-method-option__check {
     color: #00d4aa;
 }
 
-.2fa-continue-btn,
-.2fa-verify-btn {
+tfa--continue-btn,
+tfa--verify-btn {
     width: 100%;
     padding: 14px 20px;
     border-radius: 12px;
@@ -260,27 +260,27 @@
     gap: 8px;
 }
 
-.2fa-continue-btn:hover:not(:disabled),
-.2fa-verify-btn:hover:not(:disabled) {
+tfa--continue-btn:hover:not(:disabled),
+tfa--verify-btn:hover:not(:disabled) {
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(0, 212, 170, 0.4);
 }
 
-.2fa-continue-btn:disabled,
-.2fa-verify-btn:disabled {
+tfa--continue-btn:disabled,
+tfa--verify-btn:disabled {
     opacity: 0.5;
     cursor: not-allowed;
     transform: none;
 }
 
-.2fa-otp-row {
+tfa--otp-row {
     display: flex;
     justify-content: center;
     gap: 8px;
     margin: 24px 0;
 }
 
-.2fa-otp-input {
+tfa--otp-input {
     width: 42px;
     height: 56px;
     text-align: center;
@@ -294,13 +294,13 @@
     transition: all 0.3s ease;
 }
 
-.2fa-otp-input:focus {
+tfa--otp-input:focus {
     border-color: #00d4aa;
     box-shadow: 0 0 0 3px rgba(0, 212, 170, 0.2);
     transform: scale(1.05);
 }
 
-.2fa-success {
+tfa--success {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -309,13 +309,13 @@
     color: #00d4aa;
 }
 
-.2fa-success p {
+tfa--success p {
     margin-top: 16px;
     font-size: 15px;
     color: rgba(255, 255, 255, 0.9);
 }
 
-.2fa-cancel-btn {
+tfa--cancel-btn {
     width: 100%;
     padding: 14px 20px;
     border-radius: 12px;
@@ -329,12 +329,12 @@
     margin-top: 12px;
 }
 
-.2fa-cancel-btn:hover {
+tfa--cancel-btn:hover {
     background: rgba(255, 255, 255, 0.08);
     border-color: rgba(255, 255, 255, 0.3);
 }
 
-.2fa-footer {
+tfa--footer {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -345,7 +345,7 @@
     border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.2fa-footer__cancel {
+tfa--footer__cancel {
     width: 100%;
     padding: 16px 24px;
     border-radius: 14px;
@@ -358,12 +358,12 @@
     transition: all 0.3s ease;
 }
 
-.2fa-footer__cancel:hover {
+tfa--footer__cancel:hover {
     background: rgba(255, 255, 255, 0.08);
     border-color: rgba(255, 255, 255, 0.3);
 }
 
-.2fa-spinner {
+tfa--spinner {
     animation: spin 1s linear infinite;
 }
 
@@ -373,21 +373,21 @@
 }
 
 @media (max-width: 480px) {
-    .2fa-header {
+    .tfa-header {
         padding: 16px 20px;
     }
 
-    .2fa-content {
+    .tfa-content {
         padding: 20px;
     }
 
-    .2fa-otp-input {
+    tfa--otp-input {
         width: 38px;
         height: 50px;
         font-size: 18px;
     }
 
-    .2fa-footer {
+    tfa--footer {
         padding: 16px 20px;
     }
 }

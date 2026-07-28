@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Zap, Check, Loader2, Clock, TrendingUp, Lightning } from 'lucide-react';
+import { ArrowLeft, Zap, Check, Loader2, Clock, TrendingUp } from 'lucide-react';
 import '../styles/ChargingSpeedPage.css';
 
 const ChargingSpeedPage = () => {
