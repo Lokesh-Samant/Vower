@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt");
 const prisma = require("../../../config/prisma");
 const { Resend } = require("resend");
-const emailOtpTemplate = require("../../../utils/ForgetPassword.otpTemplate");
+const forgotPasswordOtpTemplate  = require("../../../utils/ForgetPassword.otpTemplate");
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 

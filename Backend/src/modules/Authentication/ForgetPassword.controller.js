@@ -45,7 +45,6 @@ try {
     const { email } = req.body;
     const result = await SendOTPService({
       email,
-      password,
     });
 
     return res.status(result.code).json({
