@@ -4,7 +4,7 @@ const SendOTPService = require('./services/sendOTP.resetPassword.service')
 const VerifyOTPService = require('./services/VerifyOTP.resetPassword.service')
 const ForgetPasswordService = require('./services/resetPassword.service')
 
-const Resetpassword = (req, res)=>{
+const Resetpassword = async (req, res)=>{
 try {
     const { email, password , verificationToken} = req.body;
     const result = await ForgetPasswordService({
@@ -22,7 +22,7 @@ try {
   }
 }
 
-const VerifyPasswordOTP = (req, res)=>{
+const VerifyPasswordOTP = async (req, res)=>{
 try {
     const { email, otp } = req.body;
     const result = await VerifyOTPService({
@@ -40,7 +40,7 @@ try {
   }
 }
 
-const sendPasswordOTP = (req, res)=>{
+const sendPasswordOTP = async (req, res)=>{
 try {
     const { email } = req.body;
     const result = await SendOTPService({
