@@ -9,7 +9,7 @@ import {
   Menu,
   X
 } from "lucide-react";
-import logoImage from "../../../public/logo.jpeg";
+import logoImage from "/logo.jpeg";
 
 const Header = () => {
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
