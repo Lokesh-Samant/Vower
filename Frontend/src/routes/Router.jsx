@@ -19,11 +19,7 @@ import PaymentMethodPage from "../modules/settings/PaymentMethodPage";
 import ReservationsPage from "../modules/reservations/ReservationsPage";
 import VehiclePage from "../modules/vehicle/VehiclePage";
 import HistoryPage from "../modules/history/HistoryPage";
-import HelpPage from "../modules/profile/pages/HelpPage/HelpPage";
-import ContactSupport from "../modules/profile/pages/ContactSupport/ContactSupport";
-import RaiseTicket from "../modules/profile/pages/RaiseTicket/RaiseTicket";
-import MyTickets from "../modules/profile/pages/MyTickets/MyTickets";
-import TicketDetails from "../modules/profile/pages/TicketDetails/TicketDetails";
+import HelpPage from "../modules/help/HelpPage";
 import PrivacyPage from "../modules/privacy/PrivacyPage";
 
 import Layout from "../layout";
@@ -79,10 +75,6 @@ export default function Router() {
           <Route path="/vehicle" element={<VehiclePage />} />
           <Route path="/history" element={<HistoryPage />} />
           <Route path="/help" element={<HelpPage />} />
-          <Route path="/help/contact" element={<ContactSupport />} />
-          <Route path="/help/raise-ticket" element={<RaiseTicket />} />
-          <Route path="/help/my-tickets" element={<MyTickets />} />
-          <Route path="/help/ticket/:ticketId" element={<TicketDetails />} />
           <Route path="/privacy" element={<PrivacyPage />} />
         </Route>
 
