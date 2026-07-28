@@ -22,6 +22,12 @@ import HistoryPage from "../modules/history/HistoryPage";
 import HelpPage from "../modules/help/HelpPage";
 import PrivacyPage from "../modules/privacy/PrivacyPage";
 
+// Help Center pages
+import ContactSupport from "../modules/help/pages/ContactSupport/ContactSupport";
+import RaiseTicket from "../modules/help/pages/RaiseTicket/RaiseTicket";
+import MyTickets from "../modules/help/pages/MyTickets/MyTickets";
+import TicketDetails from "../modules/help/pages/TicketDetails/TicketDetails";
+
 import Layout from "../layout";
 
 import PrivateRoute from "./PrivateRoute";
@@ -75,6 +81,10 @@ export default function Router() {
           <Route path="/vehicle" element={<VehiclePage />} />
           <Route path="/history" element={<HistoryPage />} />
           <Route path="/help" element={<HelpPage />} />
+          <Route path="/help/contact" element={<ContactSupport />} />
+          <Route path="/help/raise-ticket" element={<RaiseTicket />} />
+          <Route path="/help/my-tickets" element={<MyTickets />} />
+          <Route path="/help/ticket/:ticketId" element={<TicketDetails />} />
           <Route path="/privacy" element={<PrivacyPage />} />
         </Route>
 

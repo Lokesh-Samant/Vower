@@ -1,9 +1,8 @@
 import React from 'react';
-import PlaceholderPage from '../../components/PlaceholderPage';
-import { HelpCircle } from 'lucide-react';
+import HelpCenter from './pages/HelpPage/HelpPage';
 
 const HelpPage = () => {
-    return <PlaceholderPage title="Help Center" icon={<HelpCircle size={48} />} />;
+    return <HelpCenter />;
 };
 
 export default HelpPage;
