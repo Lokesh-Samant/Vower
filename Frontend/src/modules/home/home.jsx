@@ -32,19 +32,19 @@ const NEWSLETTER_SLIDES = [
   { 
     id: 4, 
     image: "https://imgs.search.brave.com/TVWNxggCk5cQKVoscF8Yy6slRi5e2ef-7aq5AtdxHz4/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMjE1/NjM3ODQ5My9waG90/by9ldi1jaGFyZ2lu/Zy1zdGF0aW9uLWlu/LXJlc2lkZW50aWFs/LWFyZWEuanBnP3M9/NjEyeDYxMiZ3PTAm/az0yMCZjPV9PUEZq/YUJFWkFNTWZZVk92/d28zMldrRzF3SFFN/MUM5R3RXV2V0VzRa/Zm89", 
-    text: "Dummy TExt YARR", 
+    text: "get latest updates from vower", 
     route: "/newsletter/3" 
   },
   { 
     id: 5, 
     image: "https://imgs.search.brave.com/wzeOoLKWEhdheyPERAjZaHTXS4DaheMTGdh7XnZS7iI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/dGF0YXBvd2VyLmNv/bS9hZG9iZS9keW5h/bWljbWVkaWEvZGVs/aXZlci9kbS1wLW9p/ZC0teG9pS0pGeVk0/a3F3QlhvY3JpWnJt/UmdsYmh5ak1nTmVv/Wkc0d2hGLVV3cWM2/U2VaM2FJZDRNQXNv/RzFkSVljSWlEOGR2/TWpiSjhsbEUxTGFq/R2tZd2MtelRXQ2gz/TFRJSTlxQW1XZkxR/TS1oQXc0cl9GSk83/ODJkdF9JcW1ZODhz/MlBFWVVMWlA5VHZK/MUVDMEJxMDFwbENH/Rnc2ZFVaN3BOdnRu/b3I3TDdNL2Rlc2t0/b3AtaGVyby1iYW5u/ZXItbW9iaWxlLTA0/LXYyLndlYnA_cXVh/bGl0eT04NSZwcmVm/ZXJ3ZWJwPXRydWUm/d2lkdGg9NTc2MA", 
-    text: "Dummy TExt YARR", 
+    text: "know about ocpp and ocpi", 
     route: "/newsletter/3" 
   },
   { 
     id: 6, 
     image: "https://imgs.search.brave.com/7Rq0lJXWjZqrHKa9gwfrPnMk3so-_I0V0GprLTJG1Z8/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wMjIv/NTA2LzYxOS9zbWFs/bC9lbGVjdHJpYy1j/YXItY2hhcmdpbmct/aW4tdW5kZXJncm91/bmQtZ2FyYWdlLXBs/dWdnZWQtYXQtaG9t/ZS1jaGFyZ2VyLXN0/YXRpb24tYmF0dGVy/eS1ldi12ZWhpY2xl/LXN0YW5kaW5nLXBh/cmtpbmctZnJlZS1w/aG90by5qcGc", 
-    text:"Dummy TExt YARR", 
+    text:"Vower is doing integration with google", 
     route: "/newsletter/3" 
   },
 ];
@@ -109,13 +109,13 @@ export default function HomePage() {
         <div className="grid grid-cols-2 gap-4 sm:gap-6">
           <QuickAction 
             label="Vehicle" 
-            bgImage="https://images.unsplash.com/photo-1560958089-b8a1929cea89?q=80&w=800&auto=format&fit=crop"
+            bgImage="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTssZdN1wDvbou0SfRVn4mTHNfp-Q9cdxq9FlMV7Rh2MQ&s=10"
             className="h-40 sm:h-52"
             onClick={() => handleNavigate("vehicle", "/coming-soon")} 
           />
           <QuickAction 
             label="Session" 
-            bgImage="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=800&auto=format&fit=crop"
+            bgImage="https://static.vecteezy.com/system/resources/previews/043/108/889/non_2x/charging-time-solid-icon-design-good-for-website-and-mobile-app-free-vector.jpg"
             className="h-40 sm:h-52"
             onClick={() => handleNavigate("session", "/coming-soon")} 
           />

@@ -25,6 +25,15 @@ const Header = () => {
     navigate(path);
   };
 
+  const logouthandler = () => {
+    
+
+
+  localStorage.removeItem("vower_token");
+  window.location.href = "/login";
+
+  }
+
   const desktopMenuLinks = [
     { id: 1, label: "Admin Dashboard", path: "/coming-soon" },
     { id: 2, label: "Analytics & Reports", path: "/coming-soon" },
@@ -137,7 +146,7 @@ const Header = () => {
                      <Sliders size={16} /> Preferences
                    </button>
                    <hr className="my-1 border-black/10" />
-                   <button onClick={() => { setProfileDropdownOpen(false); console.log("Logging out..."); }} className="w-full px-4 py-2.5 text-left text-sm flex items-center gap-2.5 hover:bg-red-50 text-red-600 transition-colors">
+                   <button onClick={() => { logouthandler() }} className="w-full px-4 py-2.5 text-left text-sm flex items-center gap-2.5 hover:bg-red-50 text-red-600 transition-colors">
                      <LogOut size={16} /> Logout
                    </button>
                  </div>
