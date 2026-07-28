@@ -9,7 +9,7 @@ import {
     X,
     Loader2,
 } from 'lucide-react';
-import './EditProfilePage.css';
+import './styles/EditProfilePage.css';
 
 // Simulated taken usernames
 const TAKEN_USERNAMES = ['rahulsharma', 'admin', 'user', 'test', 'vower', 'evcharger', 'johndoe', 'janedoe'];

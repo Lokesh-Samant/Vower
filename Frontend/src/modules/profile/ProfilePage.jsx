@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './ProfilePage.css';
+import './styles/ProfilePage.css';
 
 import ProfileHeader from './components/ProfileHeader';
 import ProfileCard from './components/ProfileCard';
@@ -15,14 +15,34 @@ const ProfilePage = () => {
     };
 
     const handleMenuItemClick = (itemId) => {
-        // Future: navigate to sub-pages
-        console.log('Menu item tapped:', itemId);
+        const routes = {
+            settings: '/settings',
+            reservations: '/reservations',
+            vehicle: '/vehicle',
+            history: '/charging-history',
+            help: '/help',
+            privacy: '/privacy-policy',
+        };
+        
+        if (routes[itemId]) {
+            navigate(routes[itemId]);
+        } else {
+            console.log('Menu item tapped:', itemId);
+        }
     };
 
     const handleTabChange = (tabId) => {
-        if (tabId === 'profile') return; // already here
-        // Future: navigate to other tabs
-        console.log('Tab changed:', tabId);
+        const tabRoutes = {
+            home: '/home',
+            map: '/map',
+            reservations: '/reservations',
+            notifications: '/notifications',
+            profile: '/profile',
+        };
+        
+        if (tabRoutes[tabId]) {
+            navigate(tabRoutes[tabId]);
+        }
     };
 
     return (

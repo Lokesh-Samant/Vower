@@ -1,0 +1,181 @@
+.settings-page {
+    min-height: 100vh;
+    background-color: #0a0a0a;
+    color: #ffffff;
+    padding-bottom: 80px;
+}
+
+.settings-header {
+    display: flex;
+    align-items: center;
+    padding: 16px 20px;
+    gap: 16px;
+    position: sticky;
+    top: 0;
+    background-color: #0a0a0a;
+    z-index: 100;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.settings-header__back {
+    background: none;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.settings-header__back:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.settings-header__title {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.settings-content {
+    padding: 20px;
+}
+
+.settings-section {
+    margin-bottom: 24px;
+}
+
+.settings-section__title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+    padding-left: 12px;
+}
+
+.settings-list {
+    background-color: #1a1a1a;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.settings-list__item {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    gap: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.settings-list__item:last-child {
+    border-bottom: none;
+}
+
+.settings-list__item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.settings-list__icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background-color: rgba(0, 255, 136, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #00ff88;
+}
+
+.settings-list__label {
+    flex: 1;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.settings-list__chevron {
+    color: #666;
+}
+
+.settings-toggle {
+    width: 44px;
+    height: 24px;
+    border-radius: 12px;
+    background-color: #333;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.3s;
+}
+
+.settings-toggle--on {
+    background-color: #00ff88;
+}
+
+.settings-toggle__thumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #fff;
+    transition: transform 0.3s;
+}
+
+.settings-toggle--on .settings-toggle__thumb {
+    transform: translateX(20px);
+}
+
+.settings-section--danger {
+    margin-top: 32px;
+}
+
+.settings-logout-btn {
+    width: 100%;
+    padding: 16px;
+    background-color: rgba(255, 59, 48, 0.1);
+    color: #ff3b30;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background-color 0.2s;
+}
+
+.settings-logout-btn:hover {
+    background-color: rgba(255, 59, 48, 0.2);
+}
+
+/* Ripple effect */
+.settings-list__item {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: scale(0);
+    animation: ripple-animation 0.6s ease-out;
+    pointer-events: none;
+}
+
+@keyframes ripple-animation {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
