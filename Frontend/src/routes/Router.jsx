@@ -5,6 +5,7 @@ import { LoginPage, SignupPage, ForgotPasswordPage } from "../modules/auth";
 import ProfilePage from "../modules/profile/ProfilePage";
 import EditProfilePage from "../modules/profile/EditProfilePage";
 import HomePage from "../modules/home/home";
+import CommingSoon from "../components/commingsoon";
 
 import Layout from "../layout";
 
@@ -32,6 +33,7 @@ export default function Router() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+        <Route path="/coming-soon" element={<CommingSoon />} />
 
         {/* Protected routes (With Header/Footer) */}
         <Route

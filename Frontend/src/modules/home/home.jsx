@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Car,
   History,
@@ -51,10 +52,11 @@ const NEWSLETTER_SLIDES = [
 export default function HomePage() {
   const [activeItem, setActiveItem] = useState("overview");
   const sliderRef = useRef(null); // Reference to the scroll container
+  const navigate = useNavigate();
 
   const handleNavigate = (routeKey, path) => {
     setActiveItem(routeKey);
-    console.log(`Navigating to: ${path}`);
+    navigate(path);
   };
 
   // Auto-scroll logic
@@ -109,13 +111,13 @@ export default function HomePage() {
             label="Vehicle" 
             bgImage="https://images.unsplash.com/photo-1560958089-b8a1929cea89?q=80&w=800&auto=format&fit=crop"
             className="h-40 sm:h-52"
-            onClick={() => handleNavigate("vehicle", "/vehicle-path")} 
+            onClick={() => handleNavigate("vehicle", "/coming-soon")} 
           />
           <QuickAction 
             label="Session" 
             bgImage="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=800&auto=format&fit=crop"
             className="h-40 sm:h-52"
-            onClick={() => handleNavigate("session", "/session-path")} 
+            onClick={() => handleNavigate("session", "/coming-soon")} 
           />
         </div>
 
@@ -158,28 +160,28 @@ export default function HomePage() {
             label="Stations" 
             accent="#2F6FED" 
             className="h-36 sm:h-44"
-            onClick={() => handleNavigate("1st", "/1st-path")} 
+            onClick={() => handleNavigate("stations", "/coming-soon")} 
           />
           <QuickAction 
             icon={MapPin} 
             label="Profile" 
             accent="#B4FF39" 
             className="h-36 sm:h-44"
-            onClick={() => handleNavigate("2nd", "/2nd-path")} 
+            onClick={() => handleNavigate("profile", "/profile")} 
           />
           <QuickAction 
             icon={Zap} 
             label="Assist Route" 
             accent="#B4FF39" 
             className="h-36 sm:h-44"
-            onClick={() => handleNavigate("3rd", "/3rd-path")} 
+            onClick={() => handleNavigate("assist-route", "/coming-soon")} 
           />
           <QuickAction 
             icon={Settings} 
             label="Updates" 
             accent="#2F6FED" 
             className="h-36 sm:h-44"
-            onClick={() => handleNavigate("4th", "/4th-path")} 
+            onClick={() => handleNavigate("updates", "/coming-soon")} 
           />
         </div>
 
