@@ -5,6 +5,22 @@ import { LoginPage, SignupPage, ForgotPasswordPage } from "../modules/auth";
 import ProfilePage from "../modules/profile/ProfilePage";
 import EditProfilePage from "../modules/profile/EditProfilePage";
 import HomePage from "../modules/home/home";
+import SettingsPage from "../modules/settings/SettingsPage";
+import ChangePasswordPage from "../modules/settings/ChangePasswordPage";
+import EditEmailPage from "../modules/settings/EditEmailPage";
+import ChangePhonePage from "../modules/settings/ChangePhonePage";
+import TwoFactorPage from "../modules/settings/TwoFactorPage";
+import LanguagePage from "../modules/settings/LanguagePage";
+import NotificationsPage from "../modules/settings/NotificationsPage";
+import LocationPermissionPage from "../modules/settings/LocationPermissionPage";
+import ChargingSpeedPage from "../modules/settings/ChargingSpeedPage";
+import ConnectorPage from "../modules/settings/ConnectorPage";
+import PaymentMethodPage from "../modules/settings/PaymentMethodPage";
+import ReservationsPage from "../modules/reservations/ReservationsPage";
+import VehiclePage from "../modules/vehicle/VehiclePage";
+import HistoryPage from "../modules/history/HistoryPage";
+import HelpPage from "../modules/help/HelpPage";
+import PrivacyPage from "../modules/privacy/PrivacyPage";
 
 import Layout from "../layout";
 
@@ -44,6 +60,22 @@ export default function Router() {
           <Route path="/home" element={<HomePage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/profile/edit" element={<EditProfilePage />} />
+          <Route path="/settings" element={<SettingsPage />} />
+          <Route path="/settings/change-password" element={<ChangePasswordPage />} />
+          <Route path="/settings/email" element={<EditEmailPage />} />
+          <Route path="/settings/phone" element={<ChangePhonePage />} />
+          <Route path="/settings/two-factor" element={<TwoFactorPage />} />
+          <Route path="/settings/language" element={<LanguagePage />} />
+          <Route path="/settings/notifications" element={<NotificationsPage />} />
+          <Route path="/settings/location" element={<LocationPermissionPage />} />
+          <Route path="/settings/charging-speed" element={<ChargingSpeedPage />} />
+          <Route path="/settings/connector" element={<ConnectorPage />} />
+          <Route path="/settings/payment" element={<PaymentMethodPage />} />
+          <Route path="/reservations" element={<ReservationsPage />} />
+          <Route path="/vehicle" element={<VehiclePage />} />
+          <Route path="/history" element={<HistoryPage />} />
+          <Route path="/help" element={<HelpPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
         </Route>
 
         {/* Fallback */}
