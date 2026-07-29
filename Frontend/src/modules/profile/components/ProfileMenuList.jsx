@@ -14,7 +14,7 @@ const menuItems = [
     { id: 'settings', icon: Settings, label: 'Settings', route: '/profile/settings' },
     { id: 'reservations', icon: CalendarDays, label: 'My Reservations', route: '/profile/reservations' },
     { id: 'vehicle', icon: Car, label: 'My Vehicle', route: '/profile/vehicle' },
-    { id: 'history', icon: Zap, label: 'Charging History', route: '/profile/history' },
+    { id: 'history', icon: Zap, label: 'Charging History', route: '/profile/charging-history' },
     { id: 'help', icon: HelpCircle, label: 'Help & Support', route: '/support' },
     { id: 'privacy', icon: ShieldCheck, label: 'Privacy Policy', route: '/profile/privacy' },
 ];
