@@ -18,10 +18,6 @@ const SupportPage = () => {
         navigate('/support/contact');
     };
 
-    const handleFAQs = () => {
-        navigate('/support/faqs');
-    };
-
     const handleBack = () => {
         navigate(-1);
     };
@@ -97,7 +93,7 @@ const SupportPage = () => {
                 </div>
 
                 {/* FAQs */}
-                <div className="support-card" onClick={handleFAQs}>
+                <div className="support-card" onClick={handleContactSupport}>
                     <div className="support-card__icon-wrap">
                         <HelpCircle size={24} strokeWidth={2} />
                     </div>
