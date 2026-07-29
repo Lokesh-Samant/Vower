@@ -15,8 +15,8 @@ import PreferredSpeedPage from '../../settings/pages/PreferredSpeedPage';
 import PreferredConnectorPage from '../../settings/pages/PreferredConnectorPage';
 import PaymentMethodPage from '../../settings/pages/PaymentMethodPage';
 import AddPaymentMethodPage from '../../settings/pages/AddPaymentMethodPage';
-import ChargingHistoryPage from '../../charging-history/pages/ChargingHistoryPage';
-import ReservationsPage from '../../reservations/pages/ReservationsPage';
+import ChargingHistoryPage from '../pages/ChargingHistoryPage';
+import ReservationsPage from '../pages/ReservationsPage';
 
 export default function ProfileRoutes() {
     return (
