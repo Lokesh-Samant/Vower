@@ -27,28 +27,28 @@ import TicketDetailPage from '../../support/pages/TicketDetailPage';
 export default function ProfileRoutes() {
     return (
         <Routes>
-            <Route path="/" element={<SettingsPage />} />
-            <Route path="/change-password" element={<ChangePasswordPage />} />
-            <Route path="/edit-email" element={<EditEmailPage />} />
-            <Route path="/email-verification" element={<EmailVerificationPage />} />
-            <Route path="/change-phone" element={<ChangePhonePage />} />
-            <Route path="/phone-verification" element={<PhoneVerificationPage />} />
-            <Route path="/two-factor-setup" element={<TwoFactorSetupPage />} />
-            <Route path="/language" element={<LanguageSelectorPage />} />
-            <Route path="/notifications" element={<NotificationSettingsPage />} />
-            <Route path="/location-permission" element={<LocationPermissionPage />} />
-            <Route path="/preferred-speed" element={<PreferredSpeedPage />} />
-            <Route path="/preferred-connector" element={<PreferredConnectorPage />} />
-            <Route path="/payment-methods" element={<PaymentMethodPage />} />
-            <Route path="/add-payment" element={<AddPaymentMethodPage />} />
-            <Route path="/charging-history" element={<ChargingHistoryPage />} />
-            <Route path="/reservations" element={<ReservationsPage />} />
-            <Route path="/help/*" element={<SupportPage />} />
-            <Route path="/contact" element={<ContactSupportPage />} />
-            <Route path="/faqs" element={<FAQsPage />} />
-            <Route path="/raise-ticket" element={<RaiseTicketPage />} />
-            <Route path="/my-tickets" element={<MyTicketsPage />} />
-            <Route path="/ticket/:id" element={<TicketDetailPage />} />
+            <Route index element={<SettingsPage />} />
+            <Route path="change-password" element={<ChangePasswordPage />} />
+            <Route path="edit-email" element={<EditEmailPage />} />
+            <Route path="email-verification" element={<EmailVerificationPage />} />
+            <Route path="change-phone" element={<ChangePhonePage />} />
+            <Route path="phone-verification" element={<PhoneVerificationPage />} />
+            <Route path="two-factor-setup" element={<TwoFactorSetupPage />} />
+            <Route path="language" element={<LanguageSelectorPage />} />
+            <Route path="notifications" element={<NotificationSettingsPage />} />
+            <Route path="location-permission" element={<LocationPermissionPage />} />
+            <Route path="preferred-speed" element={<PreferredSpeedPage />} />
+            <Route path="preferred-connector" element={<PreferredConnectorPage />} />
+            <Route path="payment-methods" element={<PaymentMethodPage />} />
+            <Route path="add-payment" element={<AddPaymentMethodPage />} />
+            <Route path="charging-history" element={<ChargingHistoryPage />} />
+            <Route path="reservations" element={<ReservationsPage />} />
+            <Route path="help/*" element={<SupportPage />} />
+            <Route path="contact" element={<ContactSupportPage />} />
+            <Route path="faqs" element={<FAQsPage />} />
+            <Route path="raise-ticket" element={<RaiseTicketPage />} />
+            <Route path="my-tickets" element={<MyTicketsPage />} />
+            <Route path="ticket/:id" element={<TicketDetailPage />} />
         </Routes>
     );
 }
