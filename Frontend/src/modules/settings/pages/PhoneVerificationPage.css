@@ -1,0 +1,20 @@
+.phone-verify-page { min-height: 100vh; background: #f8f9fa; padding-bottom: 80px; }
+.pv-header { display: flex; align-items: center; gap: 16px; padding: 16px 20px; background: white; border-bottom: 1px solid #eaeaea; position: sticky; top: 0; z-index: 10; }
+.pv-header__back { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; border: none; background: #f5f5f5; color: #1a1a1a; cursor: pointer; }
+.pv-header__back:active { transform: scale(0.95); }
+.pv-header__title { font-size: 20px; font-weight: 600; color: #1a1a1a; margin: 0; }
+.pv-main { padding: 30px 20px; display: flex; flex-direction: column; align-items: center; }
+.pv-info { text-align: center; margin-bottom: 30px; }
+.pv-info__icon { color: #1976d2; margin-bottom: 12px; }
+.pv-info p { font-size: 15px; color: #666; margin: 4px 0; }
+.pv-info__phone { font-weight: 600; color: #1a1a1a; }
+.pv-otp-row { display: flex; gap: 8px; margin-bottom: 20px; }
+.pv-otp-input { width: 44px; height: 52px; text-align: center; font-size: 20px; font-weight: 600; border: 2px solid #e0e0e0; border-radius: 10px; background: white; }
+.pv-otp-input:focus { outline: none; border-color: #4CAF50; box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1); }
+.pv-verify-btn { width: 100%; padding: 14px; border: none; border-radius: 10px; background: #1a1a1a; color: white; font-size: 15px; font-weight: 600; cursor: pointer; }
+.pv-verify-btn:disabled { opacity: 0.6; }
+.pv-success { text-align: center; }
+.pv-success__icon { width: 80px; height: 80px; border-radius: 50%; background: #e8f5e9; color: #4CAF50; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; animation: popIn 0.5s ease; }
+@keyframes popIn { 0% { transform: scale(0); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+.pv-success h2 { font-size: 22px; color: #1a1a1a; margin: 0 0 8px; }
+.pv-success p { color: #666; }

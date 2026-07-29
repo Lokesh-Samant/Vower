@@ -1,0 +1,25 @@
+.2fa-page { min-height: 100vh; background: #f8f9fa; padding-bottom: 80px; }
+.2fa-header { display: flex; align-items: center; gap: 16px; padding: 16px 20px; background: white; border-bottom: 1px solid #eaeaea; position: sticky; top: 0; z-index: 10; }
+.2fa-header__back { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; border: none; background: #f5f5f5; color: #1a1a1a; cursor: pointer; }
+.2fa-header__back:active { transform: scale(0.95); }
+.2fa-header__title { font-size: 20px; font-weight: 600; color: #1a1a1a; margin: 0; }
+.2fa-main { padding: 20px 16px; }
+.2fa-methods { display: flex; flex-direction: column; gap: 12px; }
+.2fa-method { display: flex; align-items: center; gap: 16px; padding: 16px; background: white; border-radius: 12px; border: 2px solid #e0e0e0; cursor: pointer; transition: all 0.2s; }
+.2fa-method--selected { border-color: #4CAF50; background: #e8f5e9; }
+.2fa-method__icon { display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 12px; background: #f5f5f5; color: #333; }
+.2fa-method--selected .2fa-method__icon { background: #4CAF50; color: white; }
+.2fa-method__content { flex: 1; }
+.2fa-method__label { display: block; font-size: 15px; font-weight: 600; color: #1a1a1a; }
+.2fa-method__desc { font-size: 13px; color: #666; }
+.2fa-method__check { color: #4CAF50; }
+.2fa-setup { text-align: center; padding: 40px 20px; }
+.2fa-setup__icon { color: #4CAF50; margin-bottom: 16px; }
+.2fa-setup h3 { font-size: 18px; color: #1a1a1a; margin: 0 0 8px; }
+.2fa-setup p { color: #666; margin: 0 0 24px; }
+.2fa-setup__btn { width: 100%; padding: 14px; border: none; border-radius: 10px; background: #1a1a1a; color: white; font-size: 15px; font-weight: 600; cursor: pointer; }
+.2fa-success { text-align: center; padding: 60px 20px; }
+.2fa-success__icon { width: 80px; height: 80px; border-radius: 50%; background: #e8f5e9; color: #4CAF50; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; animation: popIn 0.5s ease; }
+@keyframes popIn { 0% { transform: scale(0); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+.2fa-success h2 { font-size: 22px; color: #1a1a1a; margin: 0 0 8px; }
+.2fa-success p { color: #666; }

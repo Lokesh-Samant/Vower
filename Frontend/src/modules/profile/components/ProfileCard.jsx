@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Camera } from 'lucide-react';
 
 const ProfileCard = ({
     name = 'Rahul Sharma',
@@ -9,7 +8,7 @@ const ProfileCard = ({
 }) => {
     const [imgLoaded, setImgLoaded] = useState(false);
     const navigate = useNavigate();
-
+    
     return (
         <section className="profile-card">
             {/* Avatar */}
@@ -21,9 +20,6 @@ const ProfileCard = ({
                     onLoad={() => setImgLoaded(true)}
                     draggable={false}
                 />
-                <button className="profile-card__camera" aria-label="Change profile picture">
-                    <Camera size={14} strokeWidth={2.4} />
-                </button>
             </div>
 
             {/* Info */}
@@ -42,4 +38,3 @@ const ProfileCard = ({
 };
 
 export default ProfileCard;
-
