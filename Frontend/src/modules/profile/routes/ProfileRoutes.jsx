@@ -15,6 +15,8 @@ import PreferredSpeedPage from '../../settings/pages/PreferredSpeedPage';
 import PreferredConnectorPage from '../../settings/pages/PreferredConnectorPage';
 import PaymentMethodPage from '../../settings/pages/PaymentMethodPage';
 import AddPaymentMethodPage from '../../settings/pages/AddPaymentMethodPage';
+import ChargingHistoryPage from '../../charging-history/pages/ChargingHistoryPage';
+import ReservationsPage from '../../reservations/pages/ReservationsPage';
 
 export default function ProfileRoutes() {
     return (
@@ -33,6 +35,8 @@ export default function ProfileRoutes() {
             <Route path="/preferred-connector" element={<PreferredConnectorPage />} />
             <Route path="/payment-methods" element={<PaymentMethodPage />} />
             <Route path="/add-payment" element={<AddPaymentMethodPage />} />
+            <Route path="/charging-history" element={<ChargingHistoryPage />} />
+            <Route path="/reservations" element={<ReservationsPage />} />
         </Routes>
     );
 }
