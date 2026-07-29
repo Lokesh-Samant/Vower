@@ -1,0 +1,17 @@
+.speed-page { min-height: 100vh; background: #f8f9fa; padding-bottom: 80px; }
+.speed-header { display: flex; align-items: center; gap: 16px; padding: 16px 20px; background: white; border-bottom: 1px solid #eaeaea; position: sticky; top: 0; z-index: 10; }
+.speed-header__back { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; border: none; background: #f5f5f5; color: #1a1a1a; cursor: pointer; }
+.speed-header__back:active { transform: scale(0.95); }
+.speed-header__title { font-size: 20px; font-weight: 600; color: #1a1a1a; margin: 0; }
+.speed-main { padding: 20px 16px; }
+.speed-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
+.speed-item { display: flex; align-items: center; gap: 16px; padding: 16px; background: white; border-radius: 12px; border: 2px solid #e0e0e0; cursor: pointer; transition: all 0.2s; }
+.speed-item--selected { border-color: #4CAF50; background: #e8f5e9; }
+.speed-item__icon { display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 12px; background: #f5f5f5; color: #333; }
+.speed-item--selected .speed-item__icon { background: #4CAF50; color: white; }
+.speed-item__content { flex: 1; }
+.speed-item__label { display: block; font-size: 15px; font-weight: 600; color: #1a1a1a; }
+.speed-item__desc { font-size: 13px; color: #666; }
+.speed-save-btn { width: 100%; padding: 14px; border: none; border-radius: 10px; background: #1a1a1a; color: white; font-size: 15px; font-weight: 600; cursor: pointer; }
+.speed-success { text-align: center; padding: 60px 20px; color: #4CAF50; }
+.speed-success h3 { font-size: 20px; color: #1a1a1a; margin: 8px 0 0; }

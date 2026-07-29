@@ -1,0 +1,17 @@
+.pay-page { min-height: 100vh; background: #f8f9fa; padding-bottom: 80px; }
+.pay-header { display: flex; align-items: center; gap: 16px; padding: 16px 20px; background: white; border-bottom: 1px solid #eaeaea; position: sticky; top: 0; z-index: 10; }
+.pay-header__back { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; border: none; background: #f5f5f5; color: #1a1a1a; cursor: pointer; }
+.pay-header__back:active { transform: scale(0.95); }
+.pay-header__title { font-size: 20px; font-weight: 600; color: #1a1a1a; margin: 0; }
+.pay-main { padding: 20px 16px; }
+.pay-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
+.pay-item { display: flex; flex-direction: column; gap: 12px; padding: 16px; background: white; border-radius: 12px; border: 1.5px solid #e0e0e0; }
+.pay-item__info { display: flex; align-items: center; gap: 12px; }
+.pay-item__info > svg { color: #1976d2; }
+.pay-item__label { display: block; font-size: 15px; font-weight: 600; color: #1a1a1a; }
+.pay-item__default { font-size: 12px; color: #4CAF50; font-weight: 500; }
+.pay-item__actions { display: flex; gap: 8px; }
+.pay-item__btn { display: flex; align-items: center; gap: 6px; padding: 8px 12px; border: 1px solid #e0e0e0; border-radius: 8px; background: white; font-size: 13px; color: #333; cursor: pointer; }
+.pay-item__btn--danger { color: #f44336; border-color: #ffebee; }
+.pay-add-btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 14px; border: 2px dashed #e0e0e0; border-radius: 12px; background: transparent; font-size: 15px; color: #1976d2; cursor: pointer; }
+.pay-add-btn:hover { border-color: #1976d2; background: #e3f2fd; }

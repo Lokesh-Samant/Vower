@@ -1,0 +1,24 @@
+.email-verify-page { min-height: 100vh; background: #f8f9fa; padding-bottom: 80px; }
+.ev-header { display: flex; align-items: center; gap: 16px; padding: 16px 20px; background: white; border-bottom: 1px solid #eaeaea; position: sticky; top: 0; z-index: 10; }
+.ev-header__back { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; border: none; background: #f5f5f5; color: #1a1a1a; cursor: pointer; }
+.ev-header__back:active { transform: scale(0.95); }
+.ev-header__title { font-size: 20px; font-weight: 600; color: #1a1a1a; margin: 0; }
+.ev-main { padding: 30px 20px; display: flex; flex-direction: column; align-items: center; }
+.ev-info { text-align: center; margin-bottom: 30px; }
+.ev-info__icon { color: #1976d2; margin-bottom: 12px; }
+.ev-info p { font-size: 15px; color: #666; margin: 4px 0; }
+.ev-info__email { font-weight: 600; color: #1a1a1a; word-break: break-all; }
+.ev-otp-row { display: flex; gap: 8px; margin-bottom: 20px; }
+.ev-otp-input { width: 44px; height: 52px; text-align: center; font-size: 20px; font-weight: 600; border: 2px solid #e0e0e0; border-radius: 10px; background: white; transition: all 0.2s; }
+.ev-otp-input:focus { outline: none; border-color: #4CAF50; box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1); }
+.ev-otp-input--error { border-color: #f44336; }
+.ev-error { color: #f44336; font-size: 13px; margin-bottom: 16px; }
+.ev-verify-btn { width: 100%; padding: 14px; border: none; border-radius: 10px; background: #1a1a1a; color: white; font-size: 15px; font-weight: 600; cursor: pointer; margin-bottom: 12px; }
+.ev-verify-btn:disabled { opacity: 0.6; }
+.ev-resend-btn { background: none; border: none; color: #1976d2; font-size: 14px; cursor: pointer; }
+.ev-resend-btn:disabled { opacity: 0.5; }
+.ev-success { text-align: center; }
+.ev-success__icon { width: 80px; height: 80px; border-radius: 50%; background: #e8f5e9; color: #4CAF50; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; animation: popIn 0.5s ease; }
+@keyframes popIn { 0% { transform: scale(0); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+.ev-success h2 { font-size: 22px; color: #1a1a1a; margin: 0 0 8px; }
+.ev-success p { color: #666; }
