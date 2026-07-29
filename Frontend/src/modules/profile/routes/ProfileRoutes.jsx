@@ -17,6 +17,12 @@ import PaymentMethodPage from '../../settings/pages/PaymentMethodPage';
 import AddPaymentMethodPage from '../../settings/pages/AddPaymentMethodPage';
 import ChargingHistoryPage from '../pages/ChargingHistoryPage';
 import ReservationsPage from '../pages/ReservationsPage';
+import SupportPage from '../../support/pages/SupportPage';
+import ContactSupportPage from '../../support/pages/ContactSupportPage';
+import FAQsPage from '../../support/pages/FAQsPage';
+import RaiseTicketPage from '../../support/pages/RaiseTicketPage';
+import MyTicketsPage from '../../support/pages/MyTicketsPage';
+import TicketDetailPage from '../../support/pages/TicketDetailPage';
 
 export default function ProfileRoutes() {
     return (
@@ -37,6 +43,12 @@ export default function ProfileRoutes() {
             <Route path="/add-payment" element={<AddPaymentMethodPage />} />
             <Route path="/charging-history" element={<ChargingHistoryPage />} />
             <Route path="/reservations" element={<ReservationsPage />} />
+            <Route path="/help/*" element={<SupportPage />} />
+            <Route path="/contact" element={<ContactSupportPage />} />
+            <Route path="/faqs" element={<FAQsPage />} />
+            <Route path="/raise-ticket" element={<RaiseTicketPage />} />
+            <Route path="/my-tickets" element={<MyTicketsPage />} />
+            <Route path="/ticket/:id" element={<TicketDetailPage />} />
         </Routes>
     );
 }

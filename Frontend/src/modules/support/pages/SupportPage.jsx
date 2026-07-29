@@ -43,9 +43,9 @@ const SupportPage = () => {
 
             <main className="support-main">
                 {/* Raise Ticket - Primary CTA */}
-                <div className="support-card support-card--primary" onClick={handleRaiseTicket}>
-                    <div className="support-card__icon-wrap support-card__icon-wrap--primary">
-                        <Ticket size={28} strokeWidth={2} />
+                <div className="support-card" onClick={handleRaiseTicket}>
+                    <div className="support-card__icon-wrap">
+                        <Ticket size={24} strokeWidth={2} />
                     </div>
                     <div className="support-card__content">
                         <h2 className="support-card__title">Raise a Ticket</h2>
