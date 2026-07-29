@@ -1,20 +1,20 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import SettingsPage from '../pages/SettingsPage';
-import ChangePasswordPage from '../pages/ChangePasswordPage';
-import EditEmailPage from '../pages/EditEmailPage';
-import EmailVerificationPage from '../pages/EmailVerificationPage';
-import ChangePhonePage from '../pages/ChangePhonePage';
-import PhoneVerificationPage from '../pages/PhoneVerificationPage';
-import TwoFactorSetupPage from '../pages/TwoFactorSetupPage';
-import LanguageSelectorPage from '../pages/LanguageSelectorPage';
-import NotificationSettingsPage from '../pages/NotificationSettingsPage';
-import LocationPermissionPage from '../pages/LocationPermissionPage';
-import PreferredSpeedPage from '../pages/PreferredSpeedPage';
-import PreferredConnectorPage from '../pages/PreferredConnectorPage';
-import PaymentMethodPage from '../pages/PaymentMethodPage';
-import AddPaymentMethodPage from '../pages/AddPaymentMethodPage';
+import SettingsPage from '../../settings/pages/SettingsPage';
+import ChangePasswordPage from '../../settings/pages/ChangePasswordPage';
+import EditEmailPage from '../../settings/pages/EditEmailPage';
+import EmailVerificationPage from '../../settings/pages/EmailVerificationPage';
+import ChangePhonePage from '../../settings/pages/ChangePhonePage';
+import PhoneVerificationPage from '../../settings/pages/PhoneVerificationPage';
+import TwoFactorSetupPage from '../../settings/pages/TwoFactorSetupPage';
+import LanguageSelectorPage from '../../settings/pages/LanguageSelectorPage';
+import NotificationSettingsPage from '../../settings/pages/NotificationSettingsPage';
+import LocationPermissionPage from '../../settings/pages/LocationPermissionPage';
+import PreferredSpeedPage from '../../settings/pages/PreferredSpeedPage';
+import PreferredConnectorPage from '../../settings/pages/PreferredConnectorPage';
+import PaymentMethodPage from '../../settings/pages/PaymentMethodPage';
+import AddPaymentMethodPage from '../../settings/pages/AddPaymentMethodPage';
 
 export default function ProfileRoutes() {
     return (
