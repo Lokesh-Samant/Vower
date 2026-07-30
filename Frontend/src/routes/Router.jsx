@@ -9,7 +9,6 @@ import CommingSoon from "../components/commingsoon";
 import SupportRoutes from "../modules/routes/SupportRoutes";
 
 import Layout from "../layout";
-
 import PrivateRoute from "./PrivateRoute";
 
 export default function Router() {

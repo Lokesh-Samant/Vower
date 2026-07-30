@@ -40,12 +40,7 @@ const ProfileCard = () => {
           onLoad={() => setImgLoaded(true)}
           draggable={false}
         />
-        <button
-          className="profile-card__camera"
-          aria-label="Change profile picture"
-        >
-          <Camera size={14} strokeWidth={2.4} />
-        </button>
+
       </div>
 
       {/* Info */}

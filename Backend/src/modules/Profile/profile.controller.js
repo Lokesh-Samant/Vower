@@ -25,6 +25,8 @@ const getProfile = async (req, res) => {
     }
 };
 
+
+
 const updateProfile = async (req, res) => {
     try {
         const userId = req.user.userId;
@@ -57,8 +59,8 @@ const uploadProfilePhoto = async (req, res) => {
         message: "No image uploaded",
       });
     }
-
-    const result = await uploadService.uploadPhoto(req.file);
+   const userId = req.user.userId;
+    const result = await uploadService(req.file , userId);
 
     return res.status(200).json({
       success: true,
