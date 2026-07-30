@@ -116,20 +116,26 @@
 
 /* Primary Card (Raise Ticket) */
 .support-card--primary {
-    background: linear-gradient(135deg, #111111 0%, #2a2a2a 100%);
-    border: none;
-    color: #ffffff;
+    background: #ffffff;
+    border: 1px solid #eaeaea;
+    color: #111111;
 }
 
-.support-card--primary .support-card__title,
-.support-card--primary .support-card__description,
+.support-card--primary .support-card__title {
+    color: #111111;
+}
+
+.support-card--primary .support-card__description {
+    color: #8a8a8a;
+}
+
 .support-card--primary .support-card__arrow {
-    color: #ffffff;
+    color: #c0c0c0;
 }
 
 .support-card__icon-wrap--primary {
-    background: rgba(255, 255, 255, 0.15);
-    color: #ffffff;
+    background: #f7f7f7;
+    color: #111111;
 }
 
 /* Icon Wrap */
