@@ -1,36 +1,33 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Camera } from "lucide-react";
-import axios from "axios";
 
-const ProfileCard = ({}) => {
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
+const ProfileCard = () => {
   const [imgLoaded, setImgLoaded] = useState(false);
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-  const fetchProfile = async () => {
-     console.log("ProfileCard Rendered");
-    try {
-      console.log("Fetching profile...");
+    const fetchProfile = async () => {
+      try {
+        const res = await fetch(`${BASE_URL}/profile`, {
+          credentials: "include",
+        });
 
-      const { data } = await axios.get(
-        "http://localhost:5000/profile",
-        {
-          withCredentials: true,
-        }
-      );
+        if (!res.ok) return;
 
-      console.log("Response:", data);
+        const json = await res.json();
+        // Backend shape: { success, message, data: { data: { fullName, email, user_id, photo, phone }, msg, code } }
+        setUser(json.data?.data ?? null);
+      } catch (err) {
+        console.error("Profile fetch error:", err);
+      }
+    };
 
-      setUser(data.user);
-    } catch (err) {
-      console.error("API Error:", err);
-    }
-  };
-
-  fetchProfile();
-}, []);
+    fetchProfile();
+  }, []);
 
   return (
     <section className="profile-card">
@@ -67,3 +64,4 @@ const ProfileCard = ({}) => {
 };
 
 export default ProfileCard;
+

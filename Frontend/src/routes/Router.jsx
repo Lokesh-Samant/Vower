@@ -6,6 +6,7 @@ import ProfilePage from "../modules/profile/ProfilePage";
 import EditProfilePage from "../modules/profile/EditProfilePage";
 import HomePage from "../modules/home/home";
 import CommingSoon from "../components/commingsoon";
+import SupportRoutes from "../modules/routes/SupportRoutes";
 
 import Layout from "../layout";
 
@@ -15,9 +16,6 @@ export default function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Redirect root */}
-        {/* <Route path="/" element={<Navigate to="/login" replace />} /> */}
-
         {/* Public routes (No Header/Footer) */}
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
@@ -37,9 +35,20 @@ export default function Router() {
           <Route path="/profile/edit" element={<EditProfilePage />} />
         </Route>
 
+        {/* Support routes (protected, no Layout wrapper) */}
+        <Route
+          path="/support/*"
+          element={
+            <PrivateRoute>
+              <SupportRoutes />
+            </PrivateRoute>
+          }
+        />
+
         {/* Fallback */}
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
     </BrowserRouter>
   );
 }
+

@@ -21,10 +21,16 @@ const signUpEmail = async (req, res) => {
       ...deviceInfo,
     });
 
-    return res.status(result.code).json({
-      msg: result.msg,
-      token: result.token,
-    });
+    if (result.token) {
+      res.cookie("vower", result.token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "lax",
+        maxAge: 7 * 24 * 60 * 60 * 1000,
+      });
+    }
+
+    return res.status(result.code).json({ msg: result.msg });
   } catch (error) {
     console.error("Email signup error:", error);
     return res.status(500).json({ msg: "Internal server error" });
@@ -60,10 +66,16 @@ const loginEmail = async (req, res) => {
       password,
     });
 
-    return res.status(result.code).json({
-      msg: result.msg,
-      token: result.token,
-    });
+    if (result.token) {
+      res.cookie("vower", result.token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "lax",
+        maxAge: 7 * 24 * 60 * 60 * 1000,
+      });
+    }
+
+    return res.status(result.code).json({ msg: result.msg });
   } catch (error) {
     console.error("Email login error:", error);
     return res.status(500).json({ msg: "Internal server error" });

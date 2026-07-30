@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
     Settings,
     CalendarDays,
@@ -19,6 +20,7 @@ const menuItems = [
 ];
 
 const ProfileMenuList = ({ onItemClick }) => {
+    const navigate = useNavigate();
 
     const handleRipple = useCallback((e) => {
         const target = e.currentTarget;
@@ -43,7 +45,11 @@ const ProfileMenuList = ({ onItemClick }) => {
                         tabIndex={0}
                         onClick={(e) => {
                             handleRipple(e);
-                            onItemClick?.(item.id);
+                            if (item.id === 'help') {
+                                navigate('/support');
+                            } else {
+                                onItemClick?.(item.id);
+                            }
                         }}
                         onKeyDown={(e) => {
                             if (e.key === 'Enter' || e.key === ' ') {
