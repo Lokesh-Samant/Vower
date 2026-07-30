@@ -52,6 +52,9 @@ const ContactSupportPage = () => {
         navigate(-1);
     };
 
+    // Check if we're on the FAQs page
+    const isFAQsPage = window.location.pathname === '/support/faqs';
+
     const handleCall = () => {
         window.location.href = 'tel:+18001234567';
     };
@@ -84,11 +87,12 @@ const ContactSupportPage = () => {
                         <path d="M19 12H5M12 19l-7-7 7-7"/>
                     </svg>
                 </button>
-                <h1 className="contact-support-header__title">Contact Support</h1>
+                <h1 className="contact-support-header__title">{isFAQsPage ? 'FAQs' : 'Contact Support'}</h1>
             </header>
 
             <main className="contact-support-main">
-                {/* Contact Options */}
+                {/* Contact Options - Only show on Contact Support page */}
+                {!isFAQsPage && (
                 <section className="contact-section">
                     <h2 className="section-title">Get in Touch</h2>
                     
@@ -147,6 +151,7 @@ const ContactSupportPage = () => {
                         </div>
                     </div>
                 </section>
+                )}
 
                 {/* FAQs */}
                 <section className="faqs-section">
