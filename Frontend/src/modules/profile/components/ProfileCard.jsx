@@ -50,7 +50,6 @@ const ProfileCard = () => {
 
       {/* Info */}
       <h2 className="profile-card__name">{user?.fullName || "Loading..."}</h2>
-      <p className="profile-card__username">@{user?.user_id || ""}</p>
 
       {/* Edit button */}
       <button
