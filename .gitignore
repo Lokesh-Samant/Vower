@@ -7,10 +7,14 @@ dist/
 build/
 target/
 
-# Environment files
+# Logs and temp files
+*.log
+*.tmp
+
+# Environment
 .env
 .env.local
-*.env.*
+.env.*
 
 # Editor/IDE files
 .vscode/
