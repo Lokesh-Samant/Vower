@@ -11,78 +11,83 @@ import {
 } from "lucide-react";
 import "./EditProfilePage.css";
 
-// Simulated taken usernames
-const TAKEN_USERNAMES = [
-  "rahulsharma",
-  "admin",
-  "user",
-  "test",
-  "vower",
-  "evcharger",
-  "johndoe",
-  "janedoe",
-];
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const EditProfilePage = () => {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
 
   // Form state
   const [form, setForm] = useState({
-    fullName: "Rahul Sharma",
-    username: "rahulsharma",
-    email: "rahul.sharma@email.com",
-    phone: "9876543210",
-    dob: "1995-08-15",
+    fullName: "",
+    email: "",
+    phone: "",
+    dob: "",
   });
-
-  const [usernameStatus, setUsernameStatus] = useState("idle"); // idle | checking | available | taken
-  const usernameTimer = useRef(null);
 
   const [countryCode] = useState("+91");
   const [errors, setErrors] = useState({});
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
   const [showToast, setShowToast] = useState(false);
-  const [showAvatarModal, setShowAvatarModal] = useState(false);
-  const [avatarPop, setAvatarPop] = useState(false);
-
   const [avatarUrl, setAvatarUrl] = useState(
-    "https://api.dicebear.com/9.x/initials/svg?seed=RS&backgroundColor=111111&textColor=ffffff",
+    "https://api.dicebear.com/9.x/initials/svg?backgroundColor=111111&textColor=ffffff",
   );
-
   const [selectedFile, setSelectedFile] = useState(null);
   const fileInputRef = useRef(null);
-
-  // ---- Username availability check (debounced) ----
+  // ---- Fetch user data on mount ----
   useEffect(() => {
-    if (!form.username.trim()) {
-      setUsernameStatus("idle");
-      return;
-    }
-    setUsernameStatus("checking");
-    clearTimeout(usernameTimer.current);
-    usernameTimer.current = setTimeout(() => {
-      const normalized = form.username.toLowerCase().replace(/[^a-z0-9_]/g, "");
-      if (TAKEN_USERNAMES.includes(normalized)) {
-        setUsernameStatus("taken");
-      } else {
-        setUsernameStatus("available");
+    const fetchProfile = async () => {
+      try {
+        const res = await fetch(`${BASE_URL}/profile`, {
+          credentials: "include",
+        });
+
+        if (!res.ok) {
+          setLoading(false);
+          return;
+        }
+
+        const json = await res.json();
+        const userData = json.data?.data ?? null;
+
+        if (userData) {
+          setForm({
+            fullName: userData.fullName || "",
+            email: userData.email || "",
+            phone: userData.phone || "",
+            dob: userData.dob || "",
+          });
+
+          // Update avatar URL with user's initials or photo
+          if (userData.photo) {
+            setAvatarUrl(userData.photo);
+          } else if (userData.fullName) {
+            const initials = userData.fullName
+              .split(" ")
+              .map((n) => n[0])
+              .join("")
+              .toUpperCase()
+              .slice(0, 2);
+            setAvatarUrl(
+              `https://api.dicebear.com/9.x/initials/svg?seed=${encodeURIComponent(initials)}&backgroundColor=111111&textColor=ffffff`,
+            );
+          }
+        }
+      } catch (err) {
+        console.error("Profile fetch error:", err);
+      } finally {
+        setLoading(false);
       }
-    }, 800);
-    return () => clearTimeout(usernameTimer.current);
-  }, [form.username]);
+    };
+
+    fetchProfile();
+  }, []);
 
   // ---- Validation ----
   const validate = useCallback(() => {
     const e = {};
     if (!form.fullName.trim()) e.fullName = "Name cannot be empty";
-    if (!form.username.trim()) {
-      e.username = "Username cannot be empty";
-    } else if (form.username.length < 3) {
-      e.username = "Username must be at least 3 characters";
-    } else if (usernameStatus === "taken") {
-      e.username = "This username is not available";
-    }
     if (!form.email.trim()) {
       e.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(form.email)) {
@@ -94,7 +99,7 @@ const EditProfilePage = () => {
       e.phone = "Phone number too short";
     }
     return e;
-  }, [form, usernameStatus]);
+  }, [form]);
 
   // ---- Handlers ----
   const handleChange = (field, value) => {
@@ -109,48 +114,104 @@ const EditProfilePage = () => {
     }
   };
 
-  const handleSave = async () => {
-    const validationErrors = validate();
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
+  const handlePhotoChange = (e) => {
+    const file = e.target.files[0];
+
+    if (!file) return;
+
+    // Only images
+    if (!file.type.startsWith("image/")) {
+      alert("Please select a valid image.");
       return;
     }
 
+    // Max 5 MB
+    if (file.size > 5 * 1024 * 1024) {
+      alert("Image must be smaller than 5 MB.");
+      return;
+    }
+
+    setSelectedFile(file);
+
+    const preview = URL.createObjectURL(file);
+    setAvatarUrl(preview);
+  };
+
+  const uploadPhoto = async () => {
+  if (!selectedFile) return null;
+
+  const formData = new FormData();
+  formData.append("photo", selectedFile);
+
+  const res = await fetch(`${BASE_URL}/profile/photo`, {
+    method: "PUT",
+    credentials: "include",
+    body: formData,
+  });
+
+  const json = await res.json();
+
+  if (!res.ok) {
+    throw new Error(json.message || "Photo upload failed");
+  }
+
+  return json.data.photo;
+};
+
+const handleSave = async () => {
+  const validationErrors = validate();
+
+  if (Object.keys(validationErrors).length > 0) {
+    setErrors(validationErrors);
+    return;
+  }
+
+  try {
     setSaving(true);
-    // Simulate API call
-    await new Promise((r) => setTimeout(r, 1500));
-    setSaving(false);
+
+    // 1. Upload photo if user selected one
+    if (selectedFile) {
+      await uploadPhoto();
+    }
+
+    // 2. Update profile
+    const res = await fetch(`${BASE_URL}/profile`, {
+      method: "PUT",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        fullName: form.fullName,
+        email: form.email,
+        phone: form.phone,
+        dob: form.dob,
+      }),
+    });
+
+    const json = await res.json();
+
+    if (!res.ok) {
+      throw new Error(json.message || "Profile update failed");
+    }
+
     setSaved(true);
     setShowToast(true);
 
-    // Auto-navigate back after brief delay
     setTimeout(() => {
       navigate("/profile");
-    }, 1800);
-  };
+    }, 1500);
+
+  } catch (err) {
+    console.error(err);
+    alert(err.message);
+  } finally {
+    setSaving(false);
+  }
+};
 
   const handleCancel = () => {
     navigate(-1);
-  };
-
-  const handleAvatarOption = (option) => {
-    setShowAvatarModal(false);
-    if (option === "remove") {
-      setAvatarUrl(
-        "https://api.dicebear.com/9.x/initials/svg?seed=RS&backgroundColor=cccccc&textColor=ffffff",
-      );
-      setAvatarPop(true);
-      setTimeout(() => setAvatarPop(false), 500);
-    } else {
-      // camera / gallery — simulate picking a new image
-      const seeds = ["AB", "CD", "EF", "GH", "JK", "MN"];
-      const randomSeed = seeds[Math.floor(Math.random() * seeds.length)];
-      setAvatarUrl(
-        `https://api.dicebear.com/9.x/initials/svg?seed=${randomSeed}&backgroundColor=111111&textColor=ffffff`,
-      );
-      setAvatarPop(true);
-      setTimeout(() => setAvatarPop(false), 500);
-    }
   };
 
   const disabled = saving || saved;
@@ -182,25 +243,20 @@ const EditProfilePage = () => {
           <img
             src={avatarUrl}
             alt="Profile"
-            className={`edit-avatar__img ${
-              avatarPop ? "edit-avatar__img--pop" : ""
-            }`}
+            className={`edit-avatar__img `}
             draggable={false}
           />
-
           <span className="edit-avatar__camera">
             <Camera size={15} strokeWidth={2.4} />
           </span>
         </div>
-
         <h2 className="edit-avatar__name">{form.fullName || "Your Name"}</h2>
-        <p className="edit-avatar__username">@{form.username || "username"}</p>
-
         <input
           type="file"
           ref={fileInputRef}
           accept="image/*"
           style={{ display: "none" }}
+          onChange={handlePhotoChange}
         />
       </section>
 
@@ -219,75 +275,13 @@ const EditProfilePage = () => {
               value={form.fullName}
               onChange={(e) => handleChange("fullName", e.target.value)}
               placeholder="Enter your full name"
-              disabled={disabled}
+              disabled={disabled || loading}
               autoComplete="name"
             />
           </div>
           {errors.fullName && (
             <span className="edit-field__error">
               <X size={12} /> {errors.fullName}
-            </span>
-          )}
-        </div>
-
-        {/* Username */}
-        <div className="edit-field">
-          <label className="edit-field__label" htmlFor="edit-username">
-            Username
-          </label>
-          <div className="edit-field__input-wrap">
-            <span className="edit-field__input-prefix">@</span>
-            <input
-              id="edit-username"
-              type="text"
-              className={`edit-field__input edit-field__input--with-prefix ${
-                errors.username || usernameStatus === "taken"
-                  ? "edit-field__input--error"
-                  : usernameStatus === "available"
-                    ? "edit-field__input--success"
-                    : ""
-              }`}
-              value={form.username}
-              onChange={(e) =>
-                handleChange(
-                  "username",
-                  e.target.value.toLowerCase().replace(/[^a-z0-9_]/g, ""),
-                )
-              }
-              placeholder="yourusername"
-              disabled={disabled}
-              autoComplete="username"
-              maxLength={30}
-            />
-            {usernameStatus === "checking" && (
-              <span className="edit-field__input-suffix">
-                <Loader2 size={16} className="edit-field__spinner" />
-              </span>
-            )}
-            {usernameStatus === "available" && (
-              <span className="edit-field__input-suffix edit-field__input-suffix--success">
-                <Check size={16} />
-              </span>
-            )}
-            {usernameStatus === "taken" && (
-              <span className="edit-field__input-suffix edit-field__input-suffix--error">
-                <X size={16} />
-              </span>
-            )}
-          </div>
-          {errors.username && (
-            <span className="edit-field__error">
-              <X size={12} /> {errors.username}
-            </span>
-          )}
-          {!errors.username && usernameStatus === "taken" && (
-            <span className="edit-field__error">
-              <X size={12} /> This username is not available
-            </span>
-          )}
-          {usernameStatus === "available" && (
-            <span className="edit-field__success">
-              <Check size={12} /> Username is available
             </span>
           )}
         </div>
@@ -403,55 +397,6 @@ const EditProfilePage = () => {
         <div className="edit-toast">
           <Check size={16} className="edit-toast__icon" />
           Profile Updated Successfully
-        </div>
-      )}
-
-      {/* Avatar Options Modal */}
-      {showAvatarModal && (
-        <div
-          className="avatar-modal-overlay"
-          onClick={() => setShowAvatarModal(false)}
-        >
-          <div className="avatar-modal" onClick={(e) => e.stopPropagation()}>
-            <div className="avatar-modal__handle" />
-
-            <button
-              className="avatar-modal__item"
-              onClick={() => handleAvatarOption("camera")}
-            >
-              <span className="avatar-modal__item-icon">
-                <Camera size={20} strokeWidth={1.8} />
-              </span>
-              Camera
-            </button>
-
-            <button
-              className="avatar-modal__item"
-              onClick={() => handleAvatarOption("gallery")}
-            >
-              <span className="avatar-modal__item-icon">
-                <ImageIcon size={20} strokeWidth={1.8} />
-              </span>
-              Gallery
-            </button>
-
-            <button
-              className="avatar-modal__item avatar-modal__item--danger"
-              onClick={() => handleAvatarOption("remove")}
-            >
-              <span className="avatar-modal__item-icon">
-                <Trash2 size={20} strokeWidth={1.8} />
-              </span>
-              Remove Photo
-            </button>
-
-            <button
-              className="avatar-modal__cancel"
-              onClick={() => setShowAvatarModal(false)}
-            >
-              Cancel
-            </button>
-          </div>
         </div>
       )}
     </div>
