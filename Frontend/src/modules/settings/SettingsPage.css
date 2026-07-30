@@ -1,4 +1,16 @@
-/* Settings Page Container */
+/* ==========================================================================
+   CSS Variables / Theme Configuration
+   ========================================================================== */
+:root {
+  --color-primary: #111827;            /* Main accent color (Black/Dark Gray) */
+  --color-primary-hover: #1f2937;      /* Slightly lighter dark grey for hover */
+  --color-primary-light: #f3f4f6;      /* Very light grey for active background highlights */
+  --color-primary-ring: rgba(17, 24, 39, 0.15); /* Soft dark focus shadow */
+}
+
+/* ==========================================================================
+   Settings Page Container
+   ========================================================================== */
 .settings-page {
   min-height: 100vh;
   background: #f5f7fa;
@@ -82,7 +94,7 @@
 }
 
 .settings-tabs__tab.active {
-  background: #3b82f6;
+  background: var(--color-primary);
   color: #fff;
 }
 
@@ -174,8 +186,8 @@
 
 .form-group__input:focus {
   outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-ring);
 }
 
 .form-group__input::placeholder {
@@ -234,13 +246,13 @@
 }
 
 .btn--primary {
-  background: #3b82f6;
+  background: var(--color-primary);
   color: #fff;
   border: none;
 }
 
 .btn--primary:hover {
-  background: #2563eb;
+  background: var(--color-primary-hover);
 }
 
 .btn--primary:disabled {
@@ -321,7 +333,7 @@
 }
 
 .toggle-switch__input:checked + .toggle-switch__slider {
-  background-color: #3b82f6;
+  background-color: var(--color-primary);
 }
 
 .toggle-switch__input:checked + .toggle-switch__slider:before {
@@ -329,7 +341,7 @@
 }
 
 .toggle-switch__input:focus + .toggle-switch__slider {
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 0 0 3px var(--color-primary-ring);
 }
 
 /* Toggle Row */
@@ -378,13 +390,13 @@
 }
 
 .radio-option:hover {
-  border-color: #3b82f6;
-  background: #eff6ff;
+  border-color: var(--color-primary);
+  background: var(--color-primary-light);
 }
 
 .radio-option--selected {
-  border-color: #3b82f6;
-  background: #eff6ff;
+  border-color: var(--color-primary);
+  background: var(--color-primary-light);
 }
 
 .radio-option__input {
@@ -405,14 +417,14 @@
 }
 
 .radio-option--selected .radio-option__indicator {
-  border-color: #3b82f6;
+  border-color: var(--color-primary);
 }
 
 .radio-option__indicator::after {
   content: '';
   width: 10px;
   height: 10px;
-  background: #3b82f6;
+  background: var(--color-primary);
   border-radius: 50%;
   opacity: 0;
   transition: opacity 0.2s ease;
@@ -452,13 +464,13 @@
 }
 
 .card-option:hover {
-  border-color: #3b82f6;
-  background: #eff6ff;
+  border-color: var(--color-primary);
+  background: var(--color-primary-light);
 }
 
 .card-option--selected {
-  border-color: #3b82f6;
-  background: #eff6ff;
+  border-color: var(--color-primary);
+  background: var(--color-primary-light);
 }
 
 .card-option__icon {
@@ -613,8 +625,8 @@
 
 .otp-input:focus {
   outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-ring);
 }
 
 /* Timer */
@@ -626,7 +638,7 @@
 }
 
 .timer__resend {
-  color: #3b82f6;
+  color: var(--color-primary);
   cursor: pointer;
   font-weight: 500;
 }
@@ -743,13 +755,13 @@
 }
 
 .twofa-option:hover {
-  border-color: #3b82f6;
-  background: #eff6ff;
+  border-color: var(--color-primary);
+  background: var(--color-primary-light);
 }
 
 .twofa-option--selected {
-  border-color: #3b82f6;
-  background: #eff6ff;
+  border-color: var(--color-primary);
+  background: var(--color-primary-light);
 }
 
 .twofa-option__icon {
