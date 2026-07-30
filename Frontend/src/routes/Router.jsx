@@ -7,6 +7,7 @@ import EditProfilePage from "../modules/profile/EditProfilePage";
 import HomePage from "../modules/home/home";
 import CommingSoon from "../components/commingsoon";
 import SupportRoutes from "../modules/routes/SupportRoutes";
+import SettingsPage from "../modules/settings/SettingsPage";
 
 import Layout from "../layout";
 import PrivateRoute from "./PrivateRoute";
@@ -32,6 +33,7 @@ export default function Router() {
           <Route path="/home" element={<HomePage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/profile/edit" element={<EditProfilePage />} />
+          <Route path="/settings" element={<SettingsPage />} />
         </Route>
 
         {/* Support routes (protected, no Layout wrapper) */}

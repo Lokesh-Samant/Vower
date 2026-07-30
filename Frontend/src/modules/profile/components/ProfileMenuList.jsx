@@ -47,6 +47,8 @@ const ProfileMenuList = ({ onItemClick }) => {
                             handleRipple(e);
                             if (item.id === 'help') {
                                 navigate('/support');
+                            } else if (item.id === 'settings') {
+                                navigate('/settings');
                             } else {
                                 onItemClick?.(item.id);
                             }
@@ -54,7 +56,13 @@ const ProfileMenuList = ({ onItemClick }) => {
                         onKeyDown={(e) => {
                             if (e.key === 'Enter' || e.key === ' ') {
                                 e.preventDefault();
-                                onItemClick?.(item.id);
+                                if (item.id === 'help') {
+                                    navigate('/support');
+                                } else if (item.id === 'settings') {
+                                    navigate('/settings');
+                                } else {
+                                    onItemClick?.(item.id);
+                                }
                             }
                         }}
                     >
