@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Phone, Mail, MessageSquare, Clock, HelpCircle } from 'lucide-react';
 import './ContactSupportPage.css';
