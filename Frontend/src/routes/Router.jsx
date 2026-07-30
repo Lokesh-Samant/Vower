@@ -10,24 +10,13 @@ import CommingSoon from "../components/commingsoon";
 import Layout from "../layout";
 
 import PrivateRoute from "./PrivateRoute";
-import { isAuthenticated } from "../utils/session";
 
 export default function Router() {
   return (
     <BrowserRouter>
       <Routes>
-
         {/* Redirect root */}
-        <Route
-          path="/"
-          element={
-            isAuthenticated() ? (
-              <Navigate to="/home" replace />
-            ) : (
-              <Navigate to="/login" replace />
-            )
-          }
-        />
+        {/* <Route path="/" element={<Navigate to="/login" replace />} /> */}
 
         {/* Public routes (No Header/Footer) */}
         <Route path="/login" element={<LoginPage />} />
@@ -50,7 +39,6 @@ export default function Router() {
 
         {/* Fallback */}
         <Route path="*" element={<Navigate to="/" replace />} />
-
       </Routes>
     </BrowserRouter>
   );

@@ -5,7 +5,7 @@ const loginPhoneService = require("./services/loginPhone.service");
 const sendOTPService = require("./services/sendOTP.service");
 const verifyOTPService = require("./services/verifyOTP.service");
 const googleAuthService = require("./services/googleOuath.service");
-const logoutService = require("./services/logout.service")
+
 
 const { getDeviceInfo } = require("../../utils/DeviceInfo");
 
@@ -134,6 +134,13 @@ const googleAuth = async (req, res) => {
       ...deviceInfo,
     });
 
+    res.cookie("vower", result.token, {
+      httpOnly: true,
+      secure: false,
+      sameSite: "lax",
+      maxAge: 7 * 24 * 60 * 60 * 1000,
+    });
+
     return res.status(result.code).json({
       msg: result.msg,
       token: result.token,
@@ -148,11 +155,16 @@ const googleAuth = async (req, res) => {
 };
 
 const logout = async (req, res) => {
+  res.clearCookie("vower", {
+    httpOnly: true,
+    secure: false,
+    sameSite: "lax",
+  });
+
   return res.status(200).json({
     msg: "Logged out successfully",
   });
 };
-
 
 module.exports = {
   logout,

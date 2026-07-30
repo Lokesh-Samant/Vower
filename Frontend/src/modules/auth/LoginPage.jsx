@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import useGoogleAuth from './hooks/useGoogleAuth';
 import { AUTH_ENDPOINTS } from '../../apis/endpoints';
-import { setToken } from '../../utils/session';
+
 
 const EyeIcon = ({ className = "w-5 h-5" }) => (
   <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -35,8 +35,7 @@ export default function LoginPage() {
 
   // Google Authentication — calls backend, stores JWT, navigates to home
   const googleLogin = useGoogleAuth({
-    onSuccess: ({ token }) => {
-      setToken(token);
+    onSuccess: ({ user, msg }) => {
       navigate('/home', { replace: true });
     },
     onError: (errMsg) => {
